@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>9GAG.com 内容抓取 - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ludis"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ludis"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="抓取说明1、总共52个分类。2、数据获取url：https:&amp;#x2F;&amp;#x2F;9gag.com&amp;#x2F;v1&amp;#x2F;group-posts&amp;#x2F;group&amp;#x2F;cute&amp;#x2F;type&amp;#x2F;hot?c&amp;#x3D;10说明：cute 为分类。首次获取只需传入 c&amp;#x3D;10 即为前十条数据。下次请求附带上次请求返回的 nextCursor 参数即可。每次请求返回10条数据。3、每个资源的属性："><meta property="og:type" content="blog"><meta property="og:title" content="9GAG.com 内容抓取"><meta property="og:url" content="https://ldsun.com/2018/09/25/9GAG-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="抓取说明1、总共52个分类。2、数据获取url：https:&amp;#x2F;&amp;#x2F;9gag.com&amp;#x2F;v1&amp;#x2F;group-posts&amp;#x2F;group&amp;#x2F;cute&amp;#x2F;type&amp;#x2F;hot?c&amp;#x3D;10说明：cute 为分类。首次获取只需传入 c&amp;#x3D;10 即为前十条数据。下次请求附带上次请求返回的 nextCursor 参数即可。每次请求返回10条数据。3、每个资源的属性："><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ldsun.com/img/og_image.png"><meta property="article:published_time" content="2018-09-25T11:39:02.000Z"><meta property="article:modified_time" content="2019-01-14T10:05:27.000Z"><meta property="article:author" content="Ludis"><meta property="article:tag" content="nodejs"><meta property="article:tag" content="爬虫"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ldsun.com/2018/09/25/9GAG-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"},"headline":"9GAG.com 内容抓取","image":["https://ldsun.com/img/og_image.png"],"datePublished":"2018-09-25T11:39:02.000Z","dateModified":"2019-01-14T10:05:27.000Z","author":{"@type":"Person","name":"Ludis"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://ldsun.com/img/facvion.png"}},"description":"抓取说明1、总共52个分类。2、数据获取url：https:&#x2F;&#x2F;9gag.com&#x2F;v1&#x2F;group-posts&#x2F;group&#x2F;cute&#x2F;type&#x2F;hot?c&#x3D;10说明：cute 为分类。首次获取只需传入 c&#x3D;10 即为前十条数据。下次请求附带上次请求返回的 nextCursor 参数即可。每次请求返回10条数据。3、每个资源的属性："}</script><link rel="canonical" href="https://ldsun.com/2018/09/25/9GAG-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-09-25T11:39:02.000Z" title="9/25/2018, 7:39:02 PM">2018-09-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2019-01-14T10:05:27.000Z" title="1/14/2019, 6:05:27 PM">2019-01-14</time></span><span class="level-item">8 minutes read (About 1214 words)</span><span class="level-item twikoo_visitors" id="/2018/09/25/9GAG-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/" data-flag-title="9GAG.com 内容抓取"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="twikoo_visitors"><i class="fa fa-spinner fa-spin"></i></span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">9GAG.com 内容抓取</h1><div class="content"><h3 id="-">抓取说明</h3><p>1、总共52个分类。</p><p>2、数据获取</p><ul><li>url：<code>https://9gag.com/v1/group-posts/group/cute/type/hot?c=10</code></li><li>说明：<code>cute</code> 为分类。首次获取只需传入 <code>c=10</code> 即为前十条数据。下次请求附带上次请求返回的 <code>nextCursor</code> 参数即可。每次请求返回10条数据。</li></ul><p>3、每个资源的属性：</p><ul><li>唯一标志： id</li><li>资源描述： titile</li></ul><p>4、资源分三种类型，根据images属性下的字段区分</p><ol><li> image  属性：image460    image700  </li><li> gif  属性：image460    image460sv  image460svwm    image700 说明：image460sv image460svwm 两个属性下的 hasAudio 字段为0，及为无声，即为GIF  </li><li> video  属性：image460    image460sv  image460svwm   image700 说明：image460sv image460svwm 两个属性下的 hasAudio 字段为1，及为有声，即为video  </li></ol><p>5、内容字段</p><!--kg-card-begin: code--><pre><code>image460 : &#123;
+    height: 258
+    url: "https://img-9gag-fun.9cache.com/photo/aq73Yrj_460s.jpg"
+    webpUrl: "https://img-9gag-fun.9cache.com/photo/aq73Yrj_460swp.webp"
+    width: 460
+&#125;
+
+<p>image460sv: &#123;<br>    duration: 32<br>    h265Url: “<a target="_blank" rel="noopener" href="https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svh265.mp4&quot;">https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svh265.mp4&quot;</a><br>    hasAudio: 1<br>    height: 258<br>    url: “<a target="_blank" rel="noopener" href="https://img-9gag-fun.9cache.com/photo/aq73Yrj_460sv.mp4&quot;">https://img-9gag-fun.9cache.com/photo/aq73Yrj_460sv.mp4&quot;</a><br>    vp9Url: “<a target="_blank" rel="noopener" href="https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svvp9.webm&quot;">https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svvp9.webm&quot;</a><br>    width: 460<br>&#125;</p>
+<p>image460svwm : &#123;<br>    duration: 32<br>    hasAudio: 1<br>    height: 258<br>    url: “<a target="_blank" rel="noopener" href="https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svwm.webm&quot;">https://img-9gag-fun.9cache.com/photo/aq73Yrj_460svwm.webm&quot;</a><br>    width: 460<br>&#125;</p>
+<p>image700 : &#123;<br>    height: 258<br>    url: “<a target="_blank" rel="noopener" href="https://img-9gag-fun.9cache.com/photo/aq73Yrj_460s.jpg&quot;">https://img-9gag-fun.9cache.com/photo/aq73Yrj_460s.jpg&quot;</a><br>    width: 460<br>&#125;</p>
+<p></code></pre><!--kg-card-end: code--><p>6、分类数组</p><!--kg-card-begin: code--><pre><code>[<br>    'funny',<br>    'cute',<br>    'anime-manga',<br>    'ask9gag',<br>    'awesome',<br>    'basketball',<br>    'car',<br>    'comic',<br>    'cosplay',<br>    'country',<br>    'classicalartmemes',<br>    'imadedis',<br>    'drawing',<br>    'animefanart',<br>    'food',<br>    'football',<br>    'fortnite',<br>    'gaming',<br>    'gif',<br>    'girl',<br>    'girly',<br>    'guy',<br>    'history',<br>    'horror',<br>    'home',<br>    'kpop',<br>    'leagueoflegends',<br>    'lego',<br>    'movie-tv',<br>    'music',<br>    'overwatch',<br>    'pcmr',<br>    'photography',<br>    'pokemon',<br>    'politics',<br>    'relationship',<br>    'pubg',<br>    'roastme',<br>    'savage',<br>    'starwars',<br>    'satisfying',<br>    'school',<br>    'science',<br>    'superhero',<br>    'surrealmemes',<br>    'sport',<br>    'travel',<br>    'timely',<br>    'video',<br>    'warhammer',<br>    'wallpaper',<br>    'wtf'<br>]<br></code></pre><!--kg-card-end: code--><h3 id="--1">核心代码：</h3><!--kg-card-begin: code--><pre><code>/**</p>
+<ul>
+<li><p>获取内容</p>
+</li>
+<li><p>/<br>const get9gagList = (category, offset, next) =&gt; &#123;</p>
+<p>  var options = &#123;</p>
+<pre><code>  method: &#39;GET&#39;,
+  url: `https://9gag.com/v1/group-posts/group/$&#123;category&#125;/type/$&#123;type&#125;?`
+</code></pre>
+<p>  };</p>
+<p>  if (offset == ‘’) {</p>
+<pre><code>  options.url += &#39;c=10&#39;
+</code></pre>
+<p>  } else if (offset == -1) {</p>
+<pre><code>  return next(&#39;complete&#39;)
+</code></pre>
+<p>  } else {</p>
+<pre><code>  options.url += offset
+</code></pre>
+<p>  }</p>
+<p>  request(options, function (error, response, body) {</p>
+<pre><code>  if (error) &#123;
+      next(error, null)
+      return
+  &#125;
+  let data = JSON.parse(body)
+
+  if (data &amp;amp;&amp;amp; data.data &amp;amp;&amp;amp; data.data.posts &amp;amp;&amp;amp; data.data.posts.length) &#123;
+      log.info(`获取 $&#123;category&#125; 视频列表成功 offset $&#123;offset? offset: &#39;c=10&#39;&#125;`, data.data.posts.length)
+      //videoList.push(data.data)
+      videoList = videoList.concat(data.data.posts)
+      return next(null, category, data.data.nextCursor)
+  &#125; else &#123;
+      log.info(`获取 $&#123;category&#125; 内容为空 offset $&#123;offset&#125;，所有数据获取完毕 。`)
+      return next(null, category, -1)
+  &#125;
+</code></pre>
+<p>  });</p>
+</li>
+</ul>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>批量获取内容列表</li>
+<li>/<br>const getMultiList = async category =&gt; {<br>  // 每页依次队列获取<br>  let actions = [async.constant(category, ‘’)]<br>  for (let i = 1; i &lt;= pageCount; i++) {<pre><code>  actions.push(get9gagList)
+</code></pre>
+  }<br>  return new Promise((resolve, reject) =&gt; {<pre><code>  async.waterfall(actions, function (err, result) &#123;
+      log.info(`finish crawler $&#123;category&#125; videos`, err, videoList.length)
+      //if (err) return reject(new Error(err))
+      if (err) log.info(err)
+      return resolve(videoList)
+  &#125;)
+</code></pre>
+  })<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>下载视频/图片</p>
+</li>
+<li><p>/<br>const download = (category, media, next) =&gt; {<br>  //return new Promise((resolve, reject) =&gt; {<br>  let isExist = isFileExist(media.id)<br>  if (isExist) return next(null)</p>
+<p>  let filePath<br>  if (media.type == ‘video’) {</p>
+<pre><code>  filePath = `$&#123;videoDlPath&#125;/$&#123;media.id&#125;.mp4`
+</code></pre>
+<p>  } else if (media.type == ‘img’) {</p>
+<pre><code>  filePath = `$&#123;imgDlPath&#125;/$&#123;media.id&#125;.jpg`
+</code></pre>
+<p>  } else return next(null)</p>
+<p>  request(media.url)</p>
+<pre><code>  .on(&#39;response&#39;, function (res) &#123;
+      // create file write stream
+      var fws = fs.createWriteStream(filePath);
+      // setup piping
+      res.pipe(fws);
+      // finish
+      res.on(&#39;end&#39;, function (e) &#123;
+          log.info(`finish download $&#123;category&#125; $&#123;filePath&#125;`)
+          saveJsonData(media.type, &#123;
+              id: media.id,
+              category: category,
+              desc: media.desc
+          &#125;)
+          if (media.type == &#39;video&#39;) videoAmount++
+          else imgAmount++
+
+          //return resolve(filePath)
+          return next(null)
+      &#125;);
+      // error handler
+      res.on(&#39;error&#39;, err =&amp;gt; &#123;
+          log.error(&#39;download error&#39;, err)
+          //return reject(err)
+          return next(null)
+      &#125;)
+  &#125;);
+</code></pre>
+<p>  //})<br>}</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>视频是否已下载</li>
+<li>/<br>const isFileExist = id =&gt; {<br>  let videoPath = <code>$&#123;videoDlPath&#125;/$&#123;id&#125;.mp4</code><br>  let imgPath = <code>$&#123;imgDlPath&#125;/$&#123;id&#125;.jpg</code><br>  if (fs.existsSync(videoPath)) {<pre><code>  log.info(&#39;video file exist&#39;, videoPath)
+  return true
+</code></pre>
+  } else if (fs.existsSync(imgPath)) {<pre><code>  log.info(&#39;img file exist&#39;, imgPath)
+  return true
+</code></pre>
+  } else return false<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>视频下载成功后，实时更新json数据。防止程序中途奔溃后视频信息未保存</p>
+</li>
+<li><p>/<br>const saveJsonData = (type, data) =&gt; {<br>  try {</p>
+<pre><code>  // 读取已有json信息
+  let jsonFile = type == &#39;video&#39; ? videoJsonPath : imgJsonPath
+  jsonFile += `/data.json`
+
+  let jsonData = []
+  if (fs.existsSync(jsonFile)) &#123;
+      fileData = fs.readFileSync(jsonFile, &#123;
+          encoding: &#39;utf8&#39;
+      &#125;)
+      if (fileData) &#123;
+          jsonData = JSON.parse(fileData)
+      &#125;
+  &#125;
+  // 写入
+  jsonData.push(data)
+  fs.writeFileSync(jsonFile, JSON.stringify(jsonData));
+</code></pre>
+<p>  } catch (error) {</p>
+<pre><code>  log.error(&#39;写入json文件失败&#39;, data)
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>将无声MP4转为gif图</li>
+<li>/<br>const convertVideoToGift = () =&gt; {<br>  let videoPath = ‘./233.mp4’<br>  var command = ffmpeg(videoPath)<pre><code>  .format(&#39;gif&#39;);
+</code></pre>
+  command.save(‘./233.gif’);<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>内容筛选，只下载有声视频</li>
+<li>/<br>const mediaFilter = data =&gt; {<br>  let results = [],<pre><code>  videos = [],
+  imgs = []
+</code></pre>
+  for (let i = 0; i &lt; data.length; i++) {<pre><code>  let video = data[i]
+  if (video.images.image460sv &amp;amp;&amp;amp; video.images.image460sv.hasAudio &amp;amp;&amp;amp; video.images.image460sv.url) &#123;
+      // 有声视频
+      videos.push(&#123;
+          id: video.id,
+          type: &#39;video&#39;,
+          url: video.images.image460sv.url,
+          desc: video.title
+      &#125;)
+  &#125; else if (!video.images.image460sv &amp;amp;&amp;amp; video.images.image460.url) &#123;
+      // 图片
+      imgs.push(&#123;
+          id: video.id,
+          type: &#39;img&#39;,
+          url: video.images.image460.url,
+          desc: video.title
+      &#125;)
+  &#125;
+</code></pre>
+  }<br>  return {<pre><code>  results: results.concat(videos, imgs),
+  video: videos.length,
+  img: imgs.length
+</code></pre>
+  }<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>每个分类的抓取任务</p>
+</li>
+<li><p>/<br>const task = async (category, next) =&gt; {<br>  let videoLists = await getMultiList(category)<br>  videoList = []<br>  log.info(‘数据获取成功’, videoLists.length)<br>  let {</p>
+<pre><code>  results: videos,
+  video,
+  img
+</code></pre>
+<p>  } = mediaFilter(videoLists)<br>  log.info(<code>$&#123;videoLists.length&#125; 个内容，有声视频共 $&#123;video&#125; 个，图片共 $&#123;img&#125; 个</code>)</p>
+<p>  let dlActions = videos.map(video =&gt; next =&gt; {</p>
+<pre><code>  return download(category, video, next)
+</code></pre>
+<p>  })</p>
+<p>  async.series(dlActions, (err, result) =&gt; {</p>
+<pre><code>  if (err) &#123;
+      log.error(`finish【$&#123;category&#125;】all download error`, error)
+      return next(error)
+  &#125;
+  log.info(`finish【$&#123;category&#125;】all downloads success`, result.filter(item =&amp;gt; item).length)
+  return next(null)
+</code></pre>
+<p>  })<br>}</p>
+</li>
+</ul>
+<p>const main = () =&gt; {</p>
+<pre><code>let actions = category.map(item =&amp;gt; next =&amp;gt; &#123;
+    return task(item, next)
+&#125;)
+
+return new Promise((resolve, reject) =&amp;gt; &#123;
+    async.series(actions, function (err, result) &#123;
+        if (err) return reject(new Error(err))
+        return resolve(result)
+    &#125;)
+&#125;)
+</code></pre>
+<p>}</p>
+<p>main()<br>    .then(result =&gt; {<br>        log.info(<code>awsome！ all $&#123;result.length&#125; tasks finish success! video: $&#123;videoAmount&#125; 个, img: $&#123;imgAmount&#125; 个</code>, )<br>    })<br>    .catch(error =&gt; {<br>        log.info(<code>all tasks finish error!  video: $&#123;videoAmount&#125;, img: $&#123;imgAmount&#125;</code>, error)<br>    })<br>    .then(() =&gt; {<br>        process.exit(0)<br>    })<br></code></pre><!--kg-card-end: code--><p>完整代码： <a target="_blank" rel="noopener" href="https://github.com/flute/9gag-crawler">https://github.com/flute/9gag-crawler</a></p></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>9GAG.com 内容抓取</p><p><a href="https://ldsun.com/2018/09/25/9GAG-com-内容抓取/">https://ldsun.com/2018/09/25/9GAG-com-内容抓取/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Ludis</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2018-09-25</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2019-01-14</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/nodejs/">nodejs</a><a class="link-muted mr-2" rel="tag" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=613983f6e53fae00128c5f66&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/img/alipay.JPG" alt="Alipay"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/img/wechat.JPG" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/09/26/coub-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">coub.com 内容抓取</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/09/11/%E5%B9%B2%E9%94%85%E5%9C%9F%E8%B1%86%E7%89%87-%E5%B0%96%E6%A4%92%E8%82%89%E4%B8%9D/"><span class="level-item">干锅土豆片+尖椒肉丝</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'https://twikoo-ludis.vercel.app/'
+    });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://img.ikstatic.cn/MTYzMTE3MTU3NDM3MCM1MzYjcG5n.png" alt="Ludis"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ludis</p><p class="is-size-6 is-block">Valar Morghulis, Valar Dohaeris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Beijing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">177</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/flute" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/3852099619"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:552452006@qq.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-30T07:42:16.000Z">2021-06-30</time></p><p class="title"><a href="/2021/06/30/React-Antd-Warning%E7%A7%BB%E9%99%A4%E5%A4%A7%E6%B3%95%E2%80%94%E2%80%94%E6%95%B4%E4%B8%AA%E4%B8%96%E7%95%8C%E6%B8%85%E5%87%80%E4%BA%86/">React/Antd Warning移除大法——整个世界清净了</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-05-14T10:41:14.000Z">2020-05-14</time></p><p class="title"><a href="/2020/05/14/IntersectionObserver/">IntersectionObserver</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-02-06T13:45:55.000Z">2020-02-06</time></p><p class="title"><a href="/2020/02/06/%E5%BE%AE%E5%B1%81%E6%81%A9%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E4%B9%8B-%E2%80%94%E2%80%94-V2Ray/">微屁恩使用指南之 —— V2Ray</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-12-10T07:45:26.000Z">2019-12-10</time></p><p class="title"><a href="/2019/12/10/H5%E5%9C%A8%E5%85%A8%E5%B1%8FWebview%E4%B8%AD%E5%8F%8C%E7%AB%AF%E9%80%82%E9%85%8D%E5%88%98%E6%B5%B7%E5%B1%8F/">H5在全屏Webview中双端适配刘海屏</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-07-25T09:58:45.000Z">2019-07-25</time></p><p class="title"><a href="/2019/07/25/vue-%E9%A1%B9%E7%9B%AE%E5%9C%A8%E4%BD%8E%E9%85%8D%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%BA%BF%E5%8F%8A%E4%BC%98%E5%8C%96/">vue 项目在低配机器上线及优化</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/03/"><span class="level-start"><span class="level-item">March 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/02/"><span class="level-start"><span class="level-item">February 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/01/"><span class="level-start"><span class="level-item">January 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">September 2018</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/04/"><span class="level-start"><span class="level-item">April 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/03/"><span class="level-start"><span class="level-item">March 2018</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/02/"><span class="level-start"><span class="level-item">February 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/01/"><span class="level-start"><span class="level-item">January 2018</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/06/"><span class="level-start"><span class="level-item">June 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/05/"><span class="level-start"><span class="level-item">May 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/03/"><span class="level-start"><span class="level-item">March 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/12/"><span class="level-start"><span class="level-item">December 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/11/"><span class="level-start"><span class="level-item">November 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/10/"><span class="level-start"><span class="level-item">October 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/09/"><span class="level-start"><span class="level-item">September 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/08/"><span class="level-start"><span class="level-item">August 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/07/"><span class="level-start"><span class="level-item">July 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/02/"><span class="level-start"><span class="level-item">February 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/12/"><span class="level-start"><span class="level-item">December 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/11/"><span class="level-start"><span class="level-item">November 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/10/"><span class="level-start"><span class="level-item">October 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/09/"><span class="level-start"><span class="level-item">September 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/08/"><span class="level-start"><span class="level-item">August 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/07/"><span class="level-start"><span class="level-item">July 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/06/"><span class="level-start"><span class="level-item">June 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/05/"><span class="level-start"><span class="level-item">May 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/04/"><span class="level-start"><span class="level-item">April 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/03/"><span class="level-start"><span class="level-item">March 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/02/"><span class="level-start"><span class="level-item">February 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/01/"><span class="level-start"><span class="level-item">January 2015</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/12/"><span class="level-start"><span class="level-item">December 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/11/"><span class="level-start"><span class="level-item">November 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/10/"><span class="level-start"><span class="level-item">October 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/09/"><span class="level-start"><span class="level-item">September 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/08/"><span class="level-start"><span class="level-item">August 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/07/"><span class="level-start"><span class="level-item">July 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/06/"><span class="level-start"><span class="level-item">June 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/05/"><span class="level-start"><span class="level-item">May 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/04/"><span class="level-start"><span class="level-item">April 2014</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/03/"><span class="level-start"><span class="level-item">March 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/02/"><span class="level-start"><span class="level-item">February 2014</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/01/"><span class="level-start"><span class="level-item">January 2014</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/12/"><span class="level-start"><span class="level-item">December 2013</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/11/"><span class="level-start"><span class="level-item">November 2013</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/10/"><span class="level-start"><span class="level-item">October 2013</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Flutter/"><span class="tag">Flutter</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ghost/"><span class="tag">Ghost</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/H5/"><span class="tag">H5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTTPS/"><span class="tag">HTTPS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Mac/"><span class="tag">Mac</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React-Native/"><span class="tag">React Native</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sublime/"><span class="tag">Sublime</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jQuery/"><span class="tag">jQuery</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs/"><span class="tag">nodejs</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/npm/"><span class="tag">npm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/"><span class="tag">爬虫</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/"><span class="tag">电视剧</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BE%8E%E9%A3%9F/"><span class="tag">美食</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2021 Ludis</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

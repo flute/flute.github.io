@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>coub.com 内容抓取 - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ludis"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ludis"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="抓取说明1、总共17个分类。2、数据获取url：https:&amp;#x2F;&amp;#x2F;coub.com&amp;#x2F;api&amp;#x2F;v2&amp;#x2F;timeline&amp;#x2F;hot&amp;#x2F;movies&amp;#x2F;half?per_page&amp;#x3D;25说明：movies 为分类。 per_page 为每页返回的数据量[1,25]。首次获取只需传入 page&amp;#x3D;1 即为第一页的数据。下次请求附带字段 anchor 为上次请求返回的 next 参数即可。3、每个资源的属性："><meta property="og:type" content="blog"><meta property="og:title" content="coub.com 内容抓取"><meta property="og:url" content="https://ldsun.com/2018/09/26/coub-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="抓取说明1、总共17个分类。2、数据获取url：https:&amp;#x2F;&amp;#x2F;coub.com&amp;#x2F;api&amp;#x2F;v2&amp;#x2F;timeline&amp;#x2F;hot&amp;#x2F;movies&amp;#x2F;half?per_page&amp;#x3D;25说明：movies 为分类。 per_page 为每页返回的数据量[1,25]。首次获取只需传入 page&amp;#x3D;1 即为第一页的数据。下次请求附带字段 anchor 为上次请求返回的 next 参数即可。3、每个资源的属性："><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ldsun.com/img/og_image.png"><meta property="article:published_time" content="2018-09-26T11:00:00.000Z"><meta property="article:modified_time" content="2019-01-14T10:04:47.000Z"><meta property="article:author" content="Ludis"><meta property="article:tag" content="nodejs"><meta property="article:tag" content="爬虫"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ldsun.com/2018/09/26/coub-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"},"headline":"coub.com 内容抓取","image":["https://ldsun.com/img/og_image.png"],"datePublished":"2018-09-26T11:00:00.000Z","dateModified":"2019-01-14T10:04:47.000Z","author":{"@type":"Person","name":"Ludis"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://ldsun.com/img/facvion.png"}},"description":"抓取说明1、总共17个分类。2、数据获取url：https:&#x2F;&#x2F;coub.com&#x2F;api&#x2F;v2&#x2F;timeline&#x2F;hot&#x2F;movies&#x2F;half?per_page&#x3D;25说明：movies 为分类。 per_page 为每页返回的数据量[1,25]。首次获取只需传入 page&#x3D;1 即为第一页的数据。下次请求附带字段 anchor 为上次请求返回的 next 参数即可。3、每个资源的属性："}</script><link rel="canonical" href="https://ldsun.com/2018/09/26/coub-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2018-09-26T11:00:00.000Z" title="9/26/2018, 7:00:00 PM">2018-09-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2019-01-14T10:04:47.000Z" title="1/14/2019, 6:04:47 PM">2019-01-14</time></span><span class="level-item">10 minutes read (About 1453 words)</span><span class="level-item twikoo_visitors" id="/2018/09/26/coub-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/" data-flag-title="coub.com 内容抓取"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="twikoo_visitors"><i class="fa fa-spinner fa-spin"></i></span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">coub.com 内容抓取</h1><div class="content"><h3 id="-">抓取说明</h3><p>1、总共17个分类。</p><p>2、数据获取</p><ul><li>url：<code>https://coub.com/api/v2/timeline/hot/movies/half?per_page=25</code></li><li>说明：<code>movies</code> 为分类。 <code>per_page</code> 为每页返回的数据量[1,25]。首次获取只需传入 <code>page=1</code> 即为第一页的数据。下次请求附带字段 <code>anchor</code> 为上次请求返回的 <code>next</code> 参数即可。</li></ul><p>3、每个资源的属性：</p><ul><li>唯一标志： id、permalink</li><li>资源描述： titile</li></ul><p>4、下载</p><p>coub.com的音频和视频是分开的，下载的时候需要将音视频分别下载，然后使用FFmpeg合并。<br>下载及合并使用开源项目 <code>https://github.com/TeeSeal/coub-dl</code></p><p>5、分类数组</p><!--kg-card-begin: code--><pre><code>["animals-pets", "mashup", "anime", "movies", "gaming", "cartoons", "art", "music", "sports", "science-technology", "celebrity", "nature-travel", "fashion", "dance", "cars", "nsfw"]
+</code></pre><!--kg-card-end: code--><h3 id="--1">核心代码：</h3><!--kg-card-begin: code--><pre><code>/**
+ * 获取视频列表，每次请求返回10个视频
+ * @param &#123;number&#125; page 请求的页数
+ * @param &#123;number&#125; anchor 保证数据的不重复性
+ */
+function getCoubVideoList(c, page = 1, anchor, next) &#123;
+    if (!c) &#123;
+        log.error('category empty', c)
+        return next(new Error('category empty'), null)
+    &#125;
+    var options = &#123;
+        method: 'GET',
+        url: `https://coub.com/api/v2/timeline/hot/$&#123;c&#125;/$&#123;time&#125;`,
+        //url: `https://coub.com/api/v2/timeline/hot/$&#123;c&#125;/half`,
+        qs: &#123;
+            page: page,
+            per_page: per_page
+        &#125;
+    &#125;;
+    if (anchor) options.qs.anchor = anchor
+
+<pre><code>request(options, function (error, response, body) &#123;
+    if (error) &#123;
+        next(error, null)
+        return
+    &#125;
+    let data = JSON.parse(body)
+
+    if (data &amp;amp;&amp;amp; data.coubs &amp;amp;&amp;amp; data.coubs.length) &#123;
+        log.info(`获取视频列表成功 page $&#123;page&#125;`, data.next, data.coubs.length)
+        //videoList.push(data.data)
+        videoList = videoList.concat(data.coubs)
+        return next(null, c, ++data.page, data.next)
+    &#125; else &#123;
+        log.info(&#39;获取内容为空 page $&#123;page&#125;&#39;)
+        return next(null, c, ++data.page, data.next)
+    &#125;
+&#125;);
+</code></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>获取指定分类的总页数</li>
+<li>/<br>const getTotalPage = (c) =&gt; {<br>  var options = {<pre><code>  method: &#39;GET&#39;,
+  url: `https://coub.com/api/v2/timeline/hot/$&#123;c&#125;/$&#123;time&#125;`,
+  //url: `https://coub.com/api/v2/timeline/hot/$&#123;c&#125;/half`,
+  qs: &#123;
+      page: 1,
+      per_page: per_page
+  &#125;
+</code></pre>
+  };<br>  return new Promise((resolve, reject) =&gt; {<pre><code>  request(options, function (error, response, body) &#123;
+      if (error) return reject(new Error(error))
+      let data = JSON.parse(body)
+      if (data &amp;amp;&amp;amp; data.total_pages) &#123;
+          log.info(`获取$&#123;c&#125;总页数成功`, data.total_pages)
+          return resolve(data.total_pages)
+      &#125; else &#123;
+          log.info(`获取$&#123;c&#125;总页数失败`)
+          return reject(new Error(&#39;页数为空&#39;))
+      &#125;
+  &#125;);
+</code></pre>
+  })</li>
+</ul>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>获取多页的视频</li>
+<li>/<br>const getMultiVideo = async c =&gt; {<br>  // 总页数<br>  let totalPage = await getTotalPage(c)<br>  // 每页依次队列获取<br>  let actions = [async.constant(c, startPage, startAnchor)]<br>  for (let i = 1; i &lt;= totalPage; i++) {<pre><code>  actions.push(getCoubVideoList)
+</code></pre>
+  }<br>  return new Promise((resolve, reject) =&gt; {<pre><code>  async.waterfall(actions, function (err, result) &#123;
+      log.info(`finish crawler $&#123;c&#125; videos`, err, videoList.length)
+      if (err) return reject(new Error(err))
+      return resolve(videoList)
+  &#125;)
+</code></pre>
+  })<br>}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>根据视频的permalink下载视频</p>
+</li>
+<li><p>@param {string} id video permalink</p>
+</li>
+<li><p>/<br>async function downloadFile(c, video, next) {<br>  if (!video || !video.permalink) return next(null, ‘’)<br>  let id = video.permalink</p>
+<p>  let filename = <code>$&#123;dlPath&#125;/$&#123;id&#125;.mp4</code></p>
+<p>  let isExist = isFileExist(id)<br>  // 文件已存在<br>  if (isExist) {</p>
+<pre><code>  return next(null, filename)
+</code></pre>
+<p>  }</p>
+<p>  // 下载操作<br>  const coub = await Coub.fetch(<code>http://coub.com/view/$&#123;id&#125;</code>).catch(error =&gt; {</p>
+<pre><code>  console.log(&#39;fetch error&#39;, error)
+  return next(null, &#39;&#39;)
+</code></pre>
+<p>  })<br>  if (!coub) return next(null, ‘’)<br>  coub.attachAudio()<br>  if (fastMode) coub.addOption(‘-c’, ‘copy’)<br>  coub.addOption(‘-shortest’)<br>  let ts = new Date()<br>  coub.write(filename)</p>
+<pre><code>  .then(result =&amp;gt; &#123;
+      let te = new Date()
+      let tu = (te - ts) / 1000
+      log.info(`$&#123;downloadCount&#125;：finish download $&#123;c&#125; $&#123;id&#125;.mp4`, filename, `用时$&#123;tu&#125;s`)
+      downloadCount++
+      // 视频信息
+      let videoInfo = &#123;
+          desc: video.title,
+          category: c,
+          filename: `$&#123;id&#125;.mp4`
+      &#125;
+      // 实时写入json
+      saveJsonData(videoInfo)
+
+      dlFilesJson.push(videoInfo)
+      return next(null, result)
+      //return resolve(result)
+  &#125;)
+  .catch(error =&amp;gt; &#123;
+      log.error(`download error $&#123;id&#125;.mp4`, error)
+      return next(error, &#39;&#39;)
+      //return reject(error)
+  &#125;)
+</code></pre>
+<p>}</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>视频是否已下载</p>
+</li>
+<li><p>/<br>const isFileExist = id =&gt; {<br>  let oldPath = path.resolve(__dirname, <code>./src/video/$&#123;id&#125;.mp4</code>);<br>  let newPath = path.resolve(__dirname, <code>./downloads/video/$&#123;id&#125;.mp4</code>);<br>  let weeklyPath = path.resolve(__dirname, <code>./weekly/video/$&#123;id&#125;.mp4</code>);<br>  let monthlyPath = path.resolve(__dirname, <code>./monthly/video/$&#123;id&#125;.mp4</code>);<br>  let quarterPath = path.resolve(__dirname, <code>./quarter/video/$&#123;id&#125;.mp4</code>);<br>  let halfPath = path.resolve(__dirname, <code>./half/video/$&#123;id&#125;.mp4</code>);</p>
+<p>  if (fs.existsSync(oldPath)) {</p>
+<pre><code>  log.info(&#39;file exist&#39;, oldPath)
+  return true
+</code></pre>
+<p>  } else if (fs.existsSync(newPath)) {</p>
+<pre><code>  log.info(&#39;file exist&#39;, newPath)
+  return true
+</code></pre>
+<p>  } else if(fs.existsSync(weeklyPath)){</p>
+<pre><code>  log.info(&#39;file exist&#39;, weeklyPath)
+  return true
+</code></pre>
+<p>  } else if(fs.existsSync(monthlyPath)){</p>
+<pre><code>  log.info(&#39;file exist&#39;, monthlyPath)
+  return true
+</code></pre>
+<p>  } else if(fs.existsSync(quarterPath)){</p>
+<pre><code>  log.info(&#39;file exist&#39;, quarterPath)
+  return true
+</code></pre>
+<p>  } else if(fs.existsSync(halfPath)){</p>
+<pre><code>  log.info(&#39;file exist&#39;, halfPath)
+  return true
+</code></pre>
+<p>  } else return false<br>}</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>视频下载成功后，实时更新json数据。防止程序中途奔溃后视频信息未保存</p>
+</li>
+<li><p>@param {*} data </p>
+</li>
+<li><p>/<br>const saveJsonData = data =&gt; {<br>  try {</p>
+<pre><code>  // 读取已有json信息
+  let jsonFile = `$&#123;jsonPath&#125;/all.json`
+
+  let jsonData = []
+  if (fs.existsSync(jsonFile)) &#123;
+      fileData = fs.readFileSync(jsonFile, &#123;
+          encoding: &#39;utf8&#39;
+      &#125;)
+      if (fileData) &#123;
+          jsonData = JSON.parse(fileData)
+      &#125;
+  &#125;
+  // 写入
+  jsonData.push(data)
+  fs.writeFileSync(jsonFile, JSON.stringify(jsonData));
+</code></pre>
+<p>  } catch (error) {</p>
+<pre><code>  log.error(&#39;写入json文件失败&#39;, data)
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li><p>使用-C模式，将视频与音频快速合并，速度快，但问题视频较多，视频声音不正常。</p>
+</li>
+<li><p>使用非-C模式，速度较慢，且由于合并时占用cpu较大，多个视频合并任务同时进行时，电脑基本会卡死</p>
+</li>
+<li><p>最终采用非-C模式，保证每个视频的音频正常。同时为保证电脑不死机，以队列模式依次处理。唯一缺陷是耗时。</p>
+</li>
+<li><p>/<br>async function doDownload(c) {<br>  let result = await getMultiVideo(c)<br>  videoList = []<br>  let data = []<br>  result.forEach(item =&gt; data = data.concat(item))<br>  log.info(<code>要抓取的 $&#123;c&#125; 类型的视频总数为 $&#123;data.length&#125; 个</code>)</p>
+<p>  let actions = data.map(video =&gt; next =&gt; {</p>
+<pre><code>  downloadFile(c, video, next)
+</code></pre>
+<p>  })</p>
+<p>  return new Promise((resolve, reject) =&gt; {</p>
+<pre><code>  let st = new Date()
+  async.series(actions, function (err, result) &#123;
+      let et = new Date()
+      let ut = timeUsed((et - st) / 1000)
+      log.info(`finish download $&#123;c&#125; video, 耗时 $&#123;ut&#125;`, err, result.length)
+
+      if (err) return reject(new Error(err))
+      // 每个分类的json
+      fs.writeFileSync(`$&#123;jsonPath&#125;/$&#123;c&#125;.json`, JSON.stringify(dlFilesJson));
+      dlFilesJson = []
+      downloadCount = 1
+      return resolve(result)
+  &#125;)
+</code></pre>
+<p>  })</p>
+</li>
+</ul>
+<p>}</p>
+<p>async function main() {</p>
+<pre><code>let animals_pets = await doDownload(&#39;animals-pets&#39;)
+let mashup = await doDownload(&#39;mashup&#39;)
+let anime = await doDownload(&#39;anime&#39;)
+let movies = await doDownload(&#39;movies&#39;)
+let gaming = await doDownload(&#39;gaming&#39;)
+let cartoons = await doDownload(&#39;cartoons&#39;)
+let art = await doDownload(&#39;art&#39;)
+let music = await doDownload(&#39;music&#39;)
+let news  = await doDownload(&#39;news&#39;)
+let sports = await doDownload(&#39;sports&#39;)
+let science_technology = await doDownload(&#39;science-technology&#39;)
+let celebrity = await doDownload(&#39;celebrity&#39;)
+let nature_travel = await doDownload(&#39;nature-travel&#39;)
+let fashion = await doDownload(&#39;fashion&#39;)
+let dance = await doDownload(&#39;dance&#39;)
+let cars = await doDownload(&#39;cars&#39;)
+let nsfw = await doDownload(&#39;nsfw&#39;)
+
+return true
+</code></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>用时显示</li>
+<li>/<br>const timeUsed = t =&gt; {<br>  // [1s, 1m)<br>  if (t &lt; 60) return <code>$&#123;Math.round(t)&#125;s</code><br>  // [1m, 1h)<br>  else if (t &gt;= 60 &amp;&amp; t &lt; 60 * 60) return <code>$&#123;Math.floor(t/60)&#125;m$&#123;Math.floor(t%60)&#125;s</code><br>  // [1h, 1d)<br>  else if (t &gt;= 60 * 60 &amp;&amp; t &lt; 60 * 60 * 24) return <code>$&#123;Math.floor(t/(60*60))&#125;h$&#123;Math.floor(t%(60*60)/60)&#125;m</code><br>  // [1d, ~)<br>  else return <code>$&#123; Math.floor(t/(24*60*60)) &#125;d $&#123; Math.floor( t%(24*60*60)/(60*60) ) &#125;h</code><br>}</li>
+</ul>
+<p>main()<br>    .then(result =&gt; {<br>        let endTime = new Date()<br>        let usedTime = timeUsed((endTime - startTime) / 1000)<br>        log.info(<code>all downloads finish，$&#123;result&#125; 个视频，共耗时 $&#123;usedTime&#125;</code>, )<br>    })<br>    .catch(error =&gt; {<br>        log.error(‘download error’, error)<br>    })<br>    .then(() =&gt; {<br>        process.exit(0)<br>    })</p>
+<p>process.on(‘uncaughtException’, err =&gt; {<br>    log.info(err)<br>    log.info(JSON.stringify(dlFilesJson))<br>})<br></code></pre><!--kg-card-end: code--><p>完整代码： <a target="_blank" rel="noopener" href="https://github.com/flute/coub-crawler">https://github.com/flute/coub-crawler</a></p></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>coub.com 内容抓取</p><p><a href="https://ldsun.com/2018/09/26/coub-com-内容抓取/">https://ldsun.com/2018/09/26/coub-com-内容抓取/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Ludis</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2018-09-26</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2019-01-14</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/nodejs/">nodejs</a><a class="link-muted mr-2" rel="tag" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=613983f6e53fae00128c5f66&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/img/alipay.JPG" alt="Alipay"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/img/wechat.JPG" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/09/27/instagram-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">instagram 内容抓取</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/09/25/9GAG-com-%E5%86%85%E5%AE%B9%E6%8A%93%E5%8F%96/"><span class="level-item">9GAG.com 内容抓取</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="content twikoo" id="twikoo"></div><script src="https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js"></script><script>twikoo.init({
+      envId: 'https://twikoo-ludis.vercel.app/'
+    });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://img.ikstatic.cn/MTYzMTE3MTU3NDM3MCM1MzYjcG5n.png" alt="Ludis"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ludis</p><p class="is-size-6 is-block">Valar Morghulis, Valar Dohaeris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Beijing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">177</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/flute" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/3852099619"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:552452006@qq.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-30T07:42:16.000Z">2021-06-30</time></p><p class="title"><a href="/2021/06/30/React-Antd-Warning%E7%A7%BB%E9%99%A4%E5%A4%A7%E6%B3%95%E2%80%94%E2%80%94%E6%95%B4%E4%B8%AA%E4%B8%96%E7%95%8C%E6%B8%85%E5%87%80%E4%BA%86/">React/Antd Warning移除大法——整个世界清净了</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-05-14T10:41:14.000Z">2020-05-14</time></p><p class="title"><a href="/2020/05/14/IntersectionObserver/">IntersectionObserver</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-02-06T13:45:55.000Z">2020-02-06</time></p><p class="title"><a href="/2020/02/06/%E5%BE%AE%E5%B1%81%E6%81%A9%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E4%B9%8B-%E2%80%94%E2%80%94-V2Ray/">微屁恩使用指南之 —— V2Ray</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-12-10T07:45:26.000Z">2019-12-10</time></p><p class="title"><a href="/2019/12/10/H5%E5%9C%A8%E5%85%A8%E5%B1%8FWebview%E4%B8%AD%E5%8F%8C%E7%AB%AF%E9%80%82%E9%85%8D%E5%88%98%E6%B5%B7%E5%B1%8F/">H5在全屏Webview中双端适配刘海屏</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-07-25T09:58:45.000Z">2019-07-25</time></p><p class="title"><a href="/2019/07/25/vue-%E9%A1%B9%E7%9B%AE%E5%9C%A8%E4%BD%8E%E9%85%8D%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%BA%BF%E5%8F%8A%E4%BC%98%E5%8C%96/">vue 项目在低配机器上线及优化</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/03/"><span class="level-start"><span class="level-item">March 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/02/"><span class="level-start"><span class="level-item">February 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/01/"><span class="level-start"><span class="level-item">January 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">September 2018</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/04/"><span class="level-start"><span class="level-item">April 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/03/"><span class="level-start"><span class="level-item">March 2018</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/02/"><span class="level-start"><span class="level-item">February 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/01/"><span class="level-start"><span class="level-item">January 2018</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/06/"><span class="level-start"><span class="level-item">June 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/05/"><span class="level-start"><span class="level-item">May 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/03/"><span class="level-start"><span class="level-item">March 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/12/"><span class="level-start"><span class="level-item">December 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/11/"><span class="level-start"><span class="level-item">November 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/10/"><span class="level-start"><span class="level-item">October 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/09/"><span class="level-start"><span class="level-item">September 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/08/"><span class="level-start"><span class="level-item">August 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/07/"><span class="level-start"><span class="level-item">July 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/02/"><span class="level-start"><span class="level-item">February 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/12/"><span class="level-start"><span class="level-item">December 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/11/"><span class="level-start"><span class="level-item">November 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/10/"><span class="level-start"><span class="level-item">October 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/09/"><span class="level-start"><span class="level-item">September 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/08/"><span class="level-start"><span class="level-item">August 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/07/"><span class="level-start"><span class="level-item">July 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/06/"><span class="level-start"><span class="level-item">June 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/05/"><span class="level-start"><span class="level-item">May 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/04/"><span class="level-start"><span class="level-item">April 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/03/"><span class="level-start"><span class="level-item">March 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/02/"><span class="level-start"><span class="level-item">February 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/01/"><span class="level-start"><span class="level-item">January 2015</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/12/"><span class="level-start"><span class="level-item">December 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/11/"><span class="level-start"><span class="level-item">November 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/10/"><span class="level-start"><span class="level-item">October 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/09/"><span class="level-start"><span class="level-item">September 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/08/"><span class="level-start"><span class="level-item">August 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/07/"><span class="level-start"><span class="level-item">July 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/06/"><span class="level-start"><span class="level-item">June 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/05/"><span class="level-start"><span class="level-item">May 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/04/"><span class="level-start"><span class="level-item">April 2014</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/03/"><span class="level-start"><span class="level-item">March 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/02/"><span class="level-start"><span class="level-item">February 2014</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/01/"><span class="level-start"><span class="level-item">January 2014</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/12/"><span class="level-start"><span class="level-item">December 2013</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/11/"><span class="level-start"><span class="level-item">November 2013</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/10/"><span class="level-start"><span class="level-item">October 2013</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Flutter/"><span class="tag">Flutter</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ghost/"><span class="tag">Ghost</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/H5/"><span class="tag">H5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTTPS/"><span class="tag">HTTPS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Mac/"><span class="tag">Mac</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React-Native/"><span class="tag">React Native</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sublime/"><span class="tag">Sublime</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jQuery/"><span class="tag">jQuery</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs/"><span class="tag">nodejs</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/npm/"><span class="tag">npm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/"><span class="tag">爬虫</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/"><span class="tag">电视剧</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BE%8E%E9%A3%9F/"><span class="tag">美食</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2021 Ludis</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
