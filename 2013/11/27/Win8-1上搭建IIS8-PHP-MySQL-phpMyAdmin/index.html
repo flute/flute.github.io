@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ludis"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ludis"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"><meta property="og:type" content="blog"><meta property="og:title" content="Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin"><meta property="og:url" content="https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/110.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/25.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/35.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/171.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/43.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/20.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/211.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/52.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/61.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/72.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/223.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/8.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/9.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/10.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/111.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/131.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/141.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/151.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/161.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/231.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/242.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/252.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/26.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/30.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/29.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/312.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/322.png"><meta property="og:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/332.png"><meta property="article:published_time" content="2013-11-27T07:00:06.000Z"><meta property="article:modified_time" content="2014-02-20T21:02:27.000Z"><meta property="article:author" content="Ludis"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://www.ldsun.com/wp-content/uploads/2013/11/110.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"},"headline":"Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin","image":["http://www.ldsun.com/wp-content/uploads/2013/11/110.png","http://www.ldsun.com/wp-content/uploads/2013/11/25.png","http://www.ldsun.com/wp-content/uploads/2013/11/35.png","http://www.ldsun.com/wp-content/uploads/2013/11/171.png","http://www.ldsun.com/wp-content/uploads/2013/11/43.png","http://www.ldsun.com/wp-content/uploads/2013/11/20.png","http://www.ldsun.com/wp-content/uploads/2013/11/211.png","http://www.ldsun.com/wp-content/uploads/2013/11/52.png","http://www.ldsun.com/wp-content/uploads/2013/11/61.png","http://www.ldsun.com/wp-content/uploads/2013/11/72.png","http://www.ldsun.com/wp-content/uploads/2013/11/223.png","http://www.ldsun.com/wp-content/uploads/2013/11/8.png","http://www.ldsun.com/wp-content/uploads/2013/11/9.png","http://www.ldsun.com/wp-content/uploads/2013/11/10.png","http://www.ldsun.com/wp-content/uploads/2013/11/111.png","http://www.ldsun.com/wp-content/uploads/2013/11/131.png","http://www.ldsun.com/wp-content/uploads/2013/11/141.png","http://www.ldsun.com/wp-content/uploads/2013/11/151.png","http://www.ldsun.com/wp-content/uploads/2013/11/161.png","http://www.ldsun.com/wp-content/uploads/2013/11/231.png","http://www.ldsun.com/wp-content/uploads/2013/11/242.png","http://www.ldsun.com/wp-content/uploads/2013/11/252.png","http://www.ldsun.com/wp-content/uploads/2013/11/26.png","http://www.ldsun.com/wp-content/uploads/2013/11/30.png","http://www.ldsun.com/wp-content/uploads/2013/11/29.png","http://www.ldsun.com/wp-content/uploads/2013/11/312.png","http://www.ldsun.com/wp-content/uploads/2013/11/322.png","http://www.ldsun.com/wp-content/uploads/2013/11/332.png"],"datePublished":"2013-11-27T07:00:06.000Z","dateModified":"2014-02-20T21:02:27.000Z","author":{"@type":"Person","name":"Ludis"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://ldsun.com/img/facvion.png"}},"description":"怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"}</script><link rel="canonical" href="https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-27T07:00:06.000Z" title="11/27/2013, 3:00:06 PM">2013-11-27</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:02:27.000Z" title="2/21/2014, 5:02:27 AM">2014-02-21</time></span><span class="level-item">11 minutes read (About 1662 words)</span><span class="level-item twikoo_visitors" id="/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/" data-flag-title="Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="twikoo_visitors"><i class="fa fa-spinner fa-spin"></i></span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin</h1><div class="content"><p> </p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ludis"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ludis"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"><meta property="og:type" content="blog"><meta property="og:title" content="Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin"><meta property="og:url" content="https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/110.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/25.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/35.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/171.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/43.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/20.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/211.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/52.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/61.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/72.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/223.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/8.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/9.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/10.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/111.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/131.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/141.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/151.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/161.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/231.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/242.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/252.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/26.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/30.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/29.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/312.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/322.png"><meta property="og:image" content="https://ldsun.com/wp-content/uploads/2013/11/332.png"><meta property="article:published_time" content="2013-11-27T07:00:06.000Z"><meta property="article:modified_time" content="2014-02-20T21:02:27.000Z"><meta property="article:author" content="Ludis"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/wp-content/uploads/2013/11/110.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"},"headline":"Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin","image":["https://ldsun.com/wp-content/uploads/2013/11/110.png","https://ldsun.com/wp-content/uploads/2013/11/25.png","https://ldsun.com/wp-content/uploads/2013/11/35.png","https://ldsun.com/wp-content/uploads/2013/11/171.png","https://ldsun.com/wp-content/uploads/2013/11/43.png","https://ldsun.com/wp-content/uploads/2013/11/20.png","https://ldsun.com/wp-content/uploads/2013/11/211.png","https://ldsun.com/wp-content/uploads/2013/11/52.png","https://ldsun.com/wp-content/uploads/2013/11/61.png","https://ldsun.com/wp-content/uploads/2013/11/72.png","https://ldsun.com/wp-content/uploads/2013/11/223.png","https://ldsun.com/wp-content/uploads/2013/11/8.png","https://ldsun.com/wp-content/uploads/2013/11/9.png","https://ldsun.com/wp-content/uploads/2013/11/10.png","https://ldsun.com/wp-content/uploads/2013/11/111.png","https://ldsun.com/wp-content/uploads/2013/11/131.png","https://ldsun.com/wp-content/uploads/2013/11/141.png","https://ldsun.com/wp-content/uploads/2013/11/151.png","https://ldsun.com/wp-content/uploads/2013/11/161.png","https://ldsun.com/wp-content/uploads/2013/11/231.png","https://ldsun.com/wp-content/uploads/2013/11/242.png","https://ldsun.com/wp-content/uploads/2013/11/252.png","https://ldsun.com/wp-content/uploads/2013/11/26.png","https://ldsun.com/wp-content/uploads/2013/11/30.png","https://ldsun.com/wp-content/uploads/2013/11/29.png","https://ldsun.com/wp-content/uploads/2013/11/312.png","https://ldsun.com/wp-content/uploads/2013/11/322.png","https://ldsun.com/wp-content/uploads/2013/11/332.png"],"datePublished":"2013-11-27T07:00:06.000Z","dateModified":"2014-02-20T21:02:27.000Z","author":{"@type":"Person","name":"Ludis"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://ldsun.com/img/facvion.png"}},"description":"怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。   一、IIS8的安装"}</script><link rel="canonical" href="https://ldsun.com/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-27T07:00:06.000Z" title="11/27/2013, 3:00:06 PM">2013-11-27</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:02:27.000Z" title="2/21/2014, 5:02:27 AM">2014-02-21</time></span><span class="level-item">10 minutes read (About 1438 words)</span><span class="level-item twikoo_visitors" id="/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/" data-flag-title="Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="twikoo_visitors"><i class="fa fa-spinner fa-spin"></i></span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">Win8.1上搭建IIS8+PHP+MySQL+phpMyAdmin</h1><div class="content"><p> </p>
 <p> </p>
 <p><strong>怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。</strong></p>
 <p> </p>
 <h4 id="一、IIS8的安装"><a href="#一、IIS8的安装" class="headerlink" title="一、IIS8的安装"></a><span style="font-size: x-large;">一、IIS8的安装</span></h4><p><strong><span style="font-size: medium;">1.</span>打开控制面板→程序和功能→启用或关闭Windows 功能</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/110.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/110.png" title="1"></a></p>
+<p><a href="/wp-content/uploads/2013/11/110.png"><img src="/wp-content/uploads/2013/11/110.png" title="1"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -13,7 +13,7 @@
 <p> </p>
 <p><span style="font-size: x-large;">2.</span><strong>“Internet Information Services”→“Web管理工具”下面所有地的选项 ; 勾选“万维网服务”下面的“应用程序开发”下所有选项。如图所示，最后点击“确定”按钮，完成更新过程。</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/25.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/25.png" title="2"></a></p>
+<p><a href="/wp-content/uploads/2013/11/25.png"><img src="/wp-content/uploads/2013/11/25.png" title="2"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -30,7 +30,7 @@
 <p> </p>
 <p><span style="font-size: small;"><strong>由于要支持PHP，因此记得在应用程序开发功能中选中CGI这一项，为了支持尽可能多的语言，最好全选</strong>。</span></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/35.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/35.png" title="3"></a></p>
+<p><a href="/wp-content/uploads/2013/11/35.png"><img src="/wp-content/uploads/2013/11/35.png" title="3"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -47,12 +47,12 @@
 <p> </p>
 <p><span style="font-size: large;">3</span><span style="font-size: small;">.<strong>更新完成后，再次进入“控制面板”→“系统和安全”→“管理工具”→“Internet（IIS）信息服务”。</strong></span></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/171.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/171.png" title="17"></a></p>
+<p><a href="/wp-content/uploads/2013/11/171.png"><img src="/wp-content/uploads/2013/11/171.png" title="17"></a></p>
 <p> </p>
 <p><span style="font-size: large;">4.</span><strong>依次展开“PC”→“网站”→“Default Web Site”，右击选择“内容视图”模式，右击“iisstart.htm”选择“浏览”项。（如果Default Web Site显示关闭，需要右击选择启动即可。）</strong></p>
 <p><strong>如果此时能打开网页，则表示IIS已安装完成，Web服务器就搭建成功啦。</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/43.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/43.png" title="4"></a></p>
+<p><a href="/wp-content/uploads/2013/11/43.png"><img src="/wp-content/uploads/2013/11/43.png" title="4"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -63,7 +63,7 @@
 <p><span style="font-size: large;">1</span>.<strong>首先下载PHP，大家可以到官网下载最新版本的PHP程序，官网地址：<a target="_blank" rel="noopener" href="http://windows.php.net/download/">http://windows.php.net/download/</a></strong></p>
 <p><strong>我下载的是php-5.5.6-Win32-VC11-x64.zip。是32位系统就下载x86，是64位就下载x64.</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/20.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/20.png" title="20"></a></p>
+<p><a href="/wp-content/uploads/2013/11/20.png"><img src="/wp-content/uploads/2013/11/20.png" title="20"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -75,7 +75,7 @@
 <p> </p>
 <p><span style="font-size: large;">3.</span><strong>配置PHP：复制W:\php\php.ini-development到桌面并改名为php.ini</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/211.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/211.png" title="21"></a></p>
+<p><a href="/wp-content/uploads/2013/11/211.png"><img src="/wp-content/uploads/2013/11/211.png" title="21"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -88,7 +88,7 @@
 <p><strong>（打开桌面上的php.ini使用CTRL+F搜索相关字段并按以下说明进行修改：)</strong></p>
 <p><strong><span style="text-indent: 2em; line-height: normal;"><span style="font-size: large;">(1)</span>.修改当前的时区date.timezone =”Asia/Shanghai”，注意去掉前面的分号“;”</span></strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/52.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/52.png" title="5"></a></p>
+<p><a href="/wp-content/uploads/2013/11/52.png"><img src="/wp-content/uploads/2013/11/52.png" title="5"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -104,7 +104,7 @@
 <p><strong>extension=php_mysqli.dll</strong></p>
 <p><strong>extension=php_pdo_mysql.dll</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/61.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/61.png" title="6"></a></p>
+<p><a href="/wp-content/uploads/2013/11/61.png"><img src="/wp-content/uploads/2013/11/61.png" title="6"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -121,7 +121,7 @@
 <p> </p>
 <p><strong><span style="font-size: large;">(3)</span>.设置DLL文件的路径extension_dir = “W:\php\ext\”，记得去掉前面的分号“;”</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/72.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/72.png" title="7"></a></p>
+<p><a href="/wp-content/uploads/2013/11/72.png"><img src="/wp-content/uploads/2013/11/72.png" title="7"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -131,7 +131,7 @@
 <p><strong><span style="font-size: large;">(4)</span>.保存修改并将php.ini复制到C:\windows目录下</strong></p>
 <p> </p>
 <p><strong>（注：可以直接在C:\windows目录下进行修改，但win8.1有权限问题，不方便。）</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/223.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/223.png" title="22"></a></p>
+<p><a href="/wp-content/uploads/2013/11/223.png"><img src="/wp-content/uploads/2013/11/223.png" title="22"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -142,15 +142,15 @@
 <p><span style="font-size: x-large; line-height: normal; text-indent: 2em;">三、<strong>配置IIS支持PHP</strong></span></p>
 <p><strong><span style="font-size: medium;">（1）</span>进入“控制面板”→“管理工具”→“Internet信息服务(IIS)管理器”→“处理程序映射”</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/8.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/8.png" title="8"></a></p>
+<p><a href="/wp-content/uploads/2013/11/8.png"><img src="/wp-content/uploads/2013/11/8.png" title="8"></a></p>
 <p> </p>
 <p><span style="font-size: large;"> </span><strong><span style="text-indent: 2em;"><span style="font-size: large;">（2）</span>选择“处理程序映射”双击，然后最右边选择“添加模块映射”：</span></strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/9.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/9.png" title="9"></a></p>
+<p><a href="/wp-content/uploads/2013/11/9.png"><img src="/wp-content/uploads/2013/11/9.png" title="9"></a></p>
 <p> </p>
 <p><strong><span style="text-indent: 2em;"><span style="font-size: medium;">（3）</span>”添加“→模块选择“FastCgiModule”，可执行文件选择“W:\php\php-cgi.exe”</span></strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/10.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/10.png" title="10"></a></p>
+<p><a href="/wp-content/uploads/2013/11/10.png"><img src="/wp-content/uploads/2013/11/10.png" title="10"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -167,18 +167,18 @@
 <p> </p>
 <p><strong>再添加模块选择映射中选择“是”</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/111.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/111.png" title="11"></a></p>
+<p><a href="/wp-content/uploads/2013/11/111.png"><img src="/wp-content/uploads/2013/11/111.png" title="11"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
 <p> </p>
 <p> </p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/131.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/131.png" title="13"></a></p>
+<p><a href="/wp-content/uploads/2013/11/131.png"><img src="/wp-content/uploads/2013/11/131.png" title="13"></a></p>
 <p> </p>
 <p><strong><span style="text-indent: 2em;"><span style="font-size: medium;">（4）</span>给网站添加默认文档：default.php和index.php</span></strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/141.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/141.png" title="14"></a></p>
+<p><a href="/wp-content/uploads/2013/11/141.png"><img src="/wp-content/uploads/2013/11/141.png" title="14"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -194,7 +194,7 @@
 <p> </p>
 <p> </p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/151.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/151.png" title="15"></a></p>
+<p><a href="/wp-content/uploads/2013/11/151.png"><img src="/wp-content/uploads/2013/11/151.png" title="15"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -207,7 +207,7 @@
 <p><strong>在建立的网站目录下新建一个index.php文件内容为“<?php phpinfo();?>”，然后再在浏览器中打开“localhost”，即可出现类似如下界面：</strong></p>
 <p><strong>（我的网站根目录：C:\inetpub\wwwroot）</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/161.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/161.png" title="16"></a></p>
+<p><a href="/wp-content/uploads/2013/11/161.png"><img src="/wp-content/uploads/2013/11/161.png" title="16"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -220,7 +220,7 @@
 <p><span style="font-size: x-large;"><strong><span style="line-height: normal; text-indent: 2em;">四、安装配置MySQL数据库</span></strong></span></p>
 <p><strong>（1）首先下载MySQL：<a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/">http://dev.mysql.com/downloads/</a></strong></p>
 <p><strong>下载完之后根据引导安装即可，这里不做说明。</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/231.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/231.png" title="23"></a></p>
+<p><a href="/wp-content/uploads/2013/11/231.png"><img src="/wp-content/uploads/2013/11/231.png" title="23"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -233,7 +233,7 @@
 <p> </p>
 <p> </p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/242.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/242.png" title="24"></a></p>
+<p><a href="/wp-content/uploads/2013/11/242.png"><img src="/wp-content/uploads/2013/11/242.png" title="24"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -246,7 +246,7 @@
 <p> </p>
 <p> </p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/252.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/252.png" title="25"></a></p>
+<p><a href="/wp-content/uploads/2013/11/252.png"><img src="/wp-content/uploads/2013/11/252.png" title="25"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -259,7 +259,7 @@
 <p> </p>
 <p> </p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/26.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/26.png" title="26"></a></p>
+<p><a href="/wp-content/uploads/2013/11/26.png"><img src="/wp-content/uploads/2013/11/26.png" title="26"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -275,7 +275,7 @@
 <p> </p>
 <p><strong><span style="font-size: medium;">（2）</span>为了让PHP能加载到MySQL的扩展，需要将C:\Program Files\MySQL\MySQL Server 5.5\lib\libmysql.dll复制到C:\WINDOWS\SYSTEM32目录下</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/30.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/30.png" title="30"></a></p>
+<p><a href="/wp-content/uploads/2013/11/30.png"><img src="/wp-content/uploads/2013/11/30.png" title="30"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -286,7 +286,7 @@
 <p><strong>说明：这步很重要，由于上面配置php.ini时已经激活了extension=php_mysqli.dll，该功能需要libmysql.dll的支持。否则mysqli会激活失败，这也将影响到phpMyAdmin的使用。</strong></p>
 <p><strong>此步骤需要重启IIS服务器，在命令行中输入“iisreset /RESTART”</strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/29.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/29.png" title="29"></a></p>
+<p><a href="/wp-content/uploads/2013/11/29.png"><img src="/wp-content/uploads/2013/11/29.png" title="29"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -300,8 +300,8 @@
 <p><strong>（1）下载phpMyAdmin.</strong></p>
 <p><strong>（2）将mysql-cluster-gpl-7.3.3-winx64.msi解压到W:\phpMyAdmin中.</strong></p>
 <p><strong>（3）在IIS中创建一个虚拟目录php指向W:\phpMyAdmin。</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/312.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/312.png" title="31"></a></p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/322.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/322.png" title="32"></a></p>
+<p><a href="/wp-content/uploads/2013/11/312.png"><img src="/wp-content/uploads/2013/11/312.png" title="31"></a></p>
+<p><a href="/wp-content/uploads/2013/11/322.png"><img src="/wp-content/uploads/2013/11/322.png" title="32"></a></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -317,7 +317,7 @@
 <h4 id="-3"><a href="#-3" class="headerlink" title=""></a></h4><p> </p>
 <h4 id="六、测试phpMyAdmin"><a href="#六、测试phpMyAdmin" class="headerlink" title="六、测试phpMyAdmin"></a><span style="font-size: x-large;"><strong>六、测试phpMyAdmin</strong></span></h4><p><strong>在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost/php%E5%A6%82%E6%9E%9C%E5%87%BA%E7%8E%B0%E4%B8%8B%E9%9D%A2%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E8%AF%B4%E6%98%8E%E6%88%90%E5%8A%9F%E4%BA%86%E3%80%82">http://localhost/php如果出现下面的界面，说明成功了。</a></strong></p>
 <p> </p>
-<p><a target="_blank" rel="noopener" href="http://www.ldsun.com/wp-content/uploads/2013/11/332.png"><img src="http://www.ldsun.com/wp-content/uploads/2013/11/332.png" title="33"></a></p>
+<p><a href="/wp-content/uploads/2013/11/332.png"><img src="/wp-content/uploads/2013/11/332.png" title="33"></a></p>
 <p>** 至此安装好之后就可以登录数据库管理了。**</p>
 <p><strong><span style="text-indent: 2em;">上面的步骤都是自己在搭建时记录下来的，绝对真实可用。你也动手试一试吧。</span></strong></p>
 <p><strong>PS：以上方法也可适用于Win7/win8中，搭建方法大同小异，大家可以尝试一下。</strong></p>
