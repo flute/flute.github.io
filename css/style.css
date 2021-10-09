@@ -11035,6 +11035,9 @@ footer.footer .level-end .field {
 .timeline .media {
   position: relative;
 }
+.timeline .media:not(:last-child) {
+  margin-bottom: 0;
+}
 .timeline .media:before,
 .timeline .media:last-child:after {
   content: '';

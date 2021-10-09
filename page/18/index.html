@@ -3,7 +3,327 @@
 <p> </p>
 <p><strong>怎么把自己的电脑搭建成服务器？本文演示Win8.1中安装配置IIS8，并搭建支持PHP和MySQL的运行环境，最后使用phpMyAdmin管理MySQL数据库。</strong></p>
 <p> </p>
-<h4 id="一、IIS8的安装"><a href="#一、IIS8的安装" class="headerlink" title="一、IIS8的安装"></a><span style="font-size: x-large;">一、IIS8的安装</span></h4></div><a class="article-more button is-small is-size-7" href="/2013/11/27/Win8-1%E4%B8%8A%E6%90%AD%E5%BB%BAIIS8-PHP-MySQL-phpMyAdmin/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-25T07:07:32.000Z" title="11/25/2013, 3:07:32 PM">2013-11-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:03:27.000Z" title="2/21/2014, 5:03:27 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 370 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/25/Bootstrap-%E6%97%8B%E8%BD%AC%E6%9C%A8%E9%A9%AC/">Bootstrap-旋转木马</a></h1><div class="content"><div id="Text">Bootstrap 是基于 HTML，CSS 和 JavaScript 的简洁灵活的流行前端框架及交互组件集，由微博的先驱 Twitter 在2011年8月开源的整套前端解决解决方案。[**Bootstrap**](http://www.bootcss.com/) 有非常完备和详尽的开发文档，Web开发人员能够轻松搭建出清爽风格的界面以及实现良好的交互效果。
+<h4 id="一、IIS8的安装"><a href="#一、IIS8的安装" class="headerlink" title="一、IIS8的安装"></a><span style="font-size: x-large;">一、IIS8的安装</span></h4><p><strong><span style="font-size: medium;">1.</span>打开控制面板→程序和功能→启用或关闭Windows 功能</strong></p>
+<p><a href="/wp-content/uploads/2013/11/110.png"><img src="/wp-content/uploads/2013/11/110.png" title="1"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: x-large;">2.</span><strong>“Internet Information Services”→“Web管理工具”下面所有地的选项 ; 勾选“万维网服务”下面的“应用程序开发”下所有选项。如图所示，最后点击“确定”按钮，完成更新过程。</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/25.png"><img src="/wp-content/uploads/2013/11/25.png" title="2"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: small;"><strong>由于要支持PHP，因此记得在应用程序开发功能中选中CGI这一项，为了支持尽可能多的语言，最好全选</strong>。</span></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/35.png"><img src="/wp-content/uploads/2013/11/35.png" title="3"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: large;">3</span><span style="font-size: small;">.<strong>更新完成后，再次进入“控制面板”→“系统和安全”→“管理工具”→“Internet（IIS）信息服务”。</strong></span></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/171.png"><img src="/wp-content/uploads/2013/11/171.png" title="17"></a></p>
+<p> </p>
+<p><span style="font-size: large;">4.</span><strong>依次展开“PC”→“网站”→“Default Web Site”，右击选择“内容视图”模式，右击“iisstart.htm”选择“浏览”项。（如果Default Web Site显示关闭，需要右击选择启动即可。）</strong></p>
+<p><strong>如果此时能打开网页，则表示IIS已安装完成，Web服务器就搭建成功啦。</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/43.png"><img src="/wp-content/uploads/2013/11/43.png" title="4"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p> </p>
+<p> </p>
+<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h4 id="-2"><a href="#-2" class="headerlink" title=""></a></h4><h4 id="二-配置PHP环境"><a href="#二-配置PHP环境" class="headerlink" title="二.配置PHP环境"></a><span style="font-size: x-large;">二.配置PHP环境</span></h4><p> </p>
+<p><span style="font-size: large;">1</span>.<strong>首先下载PHP，大家可以到官网下载最新版本的PHP程序，官网地址：<a target="_blank" rel="noopener" href="http://windows.php.net/download/">http://windows.php.net/download/</a></strong></p>
+<p><strong>我下载的是php-5.5.6-Win32-VC11-x64.zip。是32位系统就下载x86，是64位就下载x64.</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/20.png"><img src="/wp-content/uploads/2013/11/20.png" title="20"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: large;">2.</span><strong>解压下载的zip压缩包到任意目录下，我解压到W:\php下;</strong></p>
+<p> </p>
+<p><span style="font-size: large;">3.</span><strong>配置PHP：复制W:\php\php.ini-development到桌面并改名为php.ini</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/211.png"><img src="/wp-content/uploads/2013/11/211.png" title="21"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>（打开桌面上的php.ini使用CTRL+F搜索相关字段并按以下说明进行修改：)</strong></p>
+<p><strong><span style="text-indent: 2em; line-height: normal;"><span style="font-size: large;">(1)</span>.修改当前的时区date.timezone =”Asia/Shanghai”，注意去掉前面的分号“;”</span></strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/52.png"><img src="/wp-content/uploads/2013/11/52.png" title="5"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span style="font-size: large;">(2)</span>.激活你需要的扩展选项，删除一下dll语句前的分号“;”以激活他们</strong></p>
+<p><strong><span style="text-indent: 2em;">extension=php_gd2.dll </span></strong></p>
+<p><strong>extension=php_mbstring.dll</strong></p>
+<p><strong>extension=php_mysql.dll</strong></p>
+<p><strong>extension=php_mysqli.dll</strong></p>
+<p><strong>extension=php_pdo_mysql.dll</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/61.png"><img src="/wp-content/uploads/2013/11/61.png" title="6"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span style="font-size: large;">(3)</span>.设置DLL文件的路径extension_dir = “W:\php\ext\”，记得去掉前面的分号“;”</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/72.png"><img src="/wp-content/uploads/2013/11/72.png" title="7"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span style="font-size: large;">(4)</span>.保存修改并将php.ini复制到C:\windows目录下</strong></p>
+<p> </p>
+<p><strong>（注：可以直接在C:\windows目录下进行修改，但win8.1有权限问题，不方便。）</strong></p>
+<p><a href="/wp-content/uploads/2013/11/223.png"><img src="/wp-content/uploads/2013/11/223.png" title="22"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="text-indent: 2em;"> </span></p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: x-large; line-height: normal; text-indent: 2em;">三、<strong>配置IIS支持PHP</strong></span></p>
+<p><strong><span style="font-size: medium;">（1）</span>进入“控制面板”→“管理工具”→“Internet信息服务(IIS)管理器”→“处理程序映射”</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/8.png"><img src="/wp-content/uploads/2013/11/8.png" title="8"></a></p>
+<p> </p>
+<p><span style="font-size: large;"> </span><strong><span style="text-indent: 2em;"><span style="font-size: large;">（2）</span>选择“处理程序映射”双击，然后最右边选择“添加模块映射”：</span></strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/9.png"><img src="/wp-content/uploads/2013/11/9.png" title="9"></a></p>
+<p> </p>
+<p><strong><span style="text-indent: 2em;"><span style="font-size: medium;">（3）</span>”添加“→模块选择“FastCgiModule”，可执行文件选择“W:\php\php-cgi.exe”</span></strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/10.png"><img src="/wp-content/uploads/2013/11/10.png" title="10"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>再添加模块选择映射中选择“是”</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/111.png"><img src="/wp-content/uploads/2013/11/111.png" title="11"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/131.png"><img src="/wp-content/uploads/2013/11/131.png" title="13"></a></p>
+<p> </p>
+<p><strong><span style="text-indent: 2em;"><span style="font-size: medium;">（4）</span>给网站添加默认文档：default.php和index.php</span></strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/141.png"><img src="/wp-content/uploads/2013/11/141.png" title="14"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/151.png"><img src="/wp-content/uploads/2013/11/151.png" title="15"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span style="font-size: medium;">（5）</span>测试PHP环境</strong></p>
+<p><strong>在建立的网站目录下新建一个index.php文件内容为“<?php phpinfo();?>”，然后再在浏览器中打开“localhost”，即可出现类似如下界面：</strong></p>
+<p><strong>（我的网站根目录：C:\inetpub\wwwroot）</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/161.png"><img src="/wp-content/uploads/2013/11/161.png" title="16"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><span style="font-size: x-large;"><strong><span style="line-height: normal; text-indent: 2em;">四、安装配置MySQL数据库</span></strong></span></p>
+<p><strong>（1）首先下载MySQL：<a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/">http://dev.mysql.com/downloads/</a></strong></p>
+<p><strong>下载完之后根据引导安装即可，这里不做说明。</strong></p>
+<p><a href="/wp-content/uploads/2013/11/231.png"><img src="/wp-content/uploads/2013/11/231.png" title="23"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/242.png"><img src="/wp-content/uploads/2013/11/242.png" title="24"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/252.png"><img src="/wp-content/uploads/2013/11/252.png" title="25"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/26.png"><img src="/wp-content/uploads/2013/11/26.png" title="26"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span style="font-size: medium;">（2）</span>为了让PHP能加载到MySQL的扩展，需要将C:\Program Files\MySQL\MySQL Server 5.5\lib\libmysql.dll复制到C:\WINDOWS\SYSTEM32目录下</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/30.png"><img src="/wp-content/uploads/2013/11/30.png" title="30"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>说明：这步很重要，由于上面配置php.ini时已经激活了extension=php_mysqli.dll，该功能需要libmysql.dll的支持。否则mysqli会激活失败，这也将影响到phpMyAdmin的使用。</strong></p>
+<p><strong>此步骤需要重启IIS服务器，在命令行中输入“iisreset /RESTART”</strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/29.png"><img src="/wp-content/uploads/2013/11/29.png" title="29"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>** **</p>
+<p> </p>
+<p><strong><span style="font-size: x-large;">五<span style="line-height: normal; text-indent: 2em;">、安装配置phpMyAdmin</span></span></strong></p>
+<p><strong>phpMyAdmin是一个基于PHP环境用来管理MySQL数据库的一个WEB工具，如果phpMyAdmin能够成功运行，那么说明你前面IIS+PHP+MYSQL的安装配置完全正确了。</strong></p>
+<p><strong>（1）下载phpMyAdmin.</strong></p>
+<p><strong>（2）将mysql-cluster-gpl-7.3.3-winx64.msi解压到W:\phpMyAdmin中.</strong></p>
+<p><strong>（3）在IIS中创建一个虚拟目录php指向W:\phpMyAdmin。</strong></p>
+<p><a href="/wp-content/uploads/2013/11/312.png"><img src="/wp-content/uploads/2013/11/312.png" title="31"></a></p>
+<p><a href="/wp-content/uploads/2013/11/322.png"><img src="/wp-content/uploads/2013/11/322.png" title="32"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h4 id="-3"><a href="#-3" class="headerlink" title=""></a></h4><p> </p>
+<h4 id="六、测试phpMyAdmin"><a href="#六、测试phpMyAdmin" class="headerlink" title="六、测试phpMyAdmin"></a><span style="font-size: x-large;"><strong>六、测试phpMyAdmin</strong></span></h4><p><strong>在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost/php%E5%A6%82%E6%9E%9C%E5%87%BA%E7%8E%B0%E4%B8%8B%E9%9D%A2%E7%9A%84%E7%95%8C%E9%9D%A2%EF%BC%8C%E8%AF%B4%E6%98%8E%E6%88%90%E5%8A%9F%E4%BA%86%E3%80%82">http://localhost/php如果出现下面的界面，说明成功了。</a></strong></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/332.png"><img src="/wp-content/uploads/2013/11/332.png" title="33"></a></p>
+<p>** 至此安装好之后就可以登录数据库管理了。**</p>
+<p><strong><span style="text-indent: 2em;">上面的步骤都是自己在搭建时记录下来的，绝对真实可用。你也动手试一试吧。</span></strong></p>
+<p><strong>PS：以上方法也可适用于Win7/win8中，搭建方法大同小异，大家可以尝试一下。</strong></p>
+<p> </p>
+<p> </p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-25T07:07:32.000Z" title="11/25/2013, 3:07:32 PM">2013-11-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:03:27.000Z" title="2/21/2014, 5:03:27 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 370 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/25/Bootstrap-%E6%97%8B%E8%BD%AC%E6%9C%A8%E9%A9%AC/">Bootstrap-旋转木马</a></h1><div class="content"><div id="Text">Bootstrap 是基于 HTML，CSS 和 JavaScript 的简洁灵活的流行前端框架及交互组件集，由微博的先驱 Twitter 在2011年8月开源的整套前端解决解决方案。[**Bootstrap**](http://www.bootcss.com/) 有非常完备和详尽的开发文档，Web开发人员能够轻松搭建出清爽风格的界面以及实现良好的交互效果。
 
 <p>官网的文件很详细简单，对于下载来说也有多种方式。对于我们开发者来说，估计最简单的方式就是直接下载编译和压缩后的CSS、JavaScript文件，另外还包含字体文件，但是不包含文档和源码文件。打开解压包之后可以发现包含三个文件夹 css、fonts、js。</p>
 <p>可以来查看三个文件夹中的文件</p>
@@ -27,19 +347,89 @@
 <li><span style="text-indent: 2em;">第一步：找到当前主题的主题文件functions.php中（wp-content/themes），添加以下两行内容：</span><span style="text-indent: 2em;">update_option(‘siteurl’,’<a target="_blank" rel="noopener" href="http://www.ldsun.com’/">http://www.ldsun.com’</a>);  update_option(‘home’,’<a target="_blank" rel="noopener" href="http://www.ldsun.com’/">http://www.ldsun.com’</a>);  同样，其中的<a target="_blank" rel="noopener" href="http://www.ldsun.com代表你的新地址./">www.ldsun.com代表你的新地址。</a></span></li>
 <li><span style="text-indent: 2em;">第二步：登录后台—设置—常规—重新输入新博客地址（WordPress Address (URL)）和安装地址（Site Address (URL)），修改成功后一定记得删除之前在functions.php文件中添加的内容。</span></li>
 </ol>
-<p><span style="font-size: medium; background-color: #ff6600;">方法三：修改数据库 </span></p></div><a class="article-more button is-small is-size-7" href="/2013/11/21/wordpress%E5%90%8E%E5%8F%B0%E4%BF%AE%E6%94%B9%E5%9F%9F%E5%90%8D%E5%90%8E%E4%B8%8D%E8%83%BD%E7%99%BB%E5%BD%95%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-15T07:58:34.000Z" title="11/15/2013, 3:58:34 PM">2013-11-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:12:16.000Z" title="2/21/2014, 5:12:16 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 347 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/15/CSS3%E5%81%9A%E9%A1%B5%E9%9D%A2%E6%B7%A1%E5%85%A5%E6%95%88%E6%9E%9C/">CSS3做页面淡入效果</a></h1><div class="content"><p>用CSS3动画属性“@keyframes ”可实现一些动态特效（这篇文章主要是实践应用一下这个动画属性，实现页面淡入特效，在火狐24版、chrome29版、IE10中测试通过。IE9及以下浏览器不支持此特效。）</p>
+<p><span style="font-size: medium; background-color: #ff6600;">方法三：修改数据库 </span></p>
+<ol>
+<li><span style="text-indent: 2em;">登录到你的数据库管理页面，找到wp_options表；</span></li>
+<li><span style="text-indent: 2em;">将表中的siteurl和 home 字段的值修改为当前的新域名，如下图:</span></li>
+</ol>
+<p><a href="/wp-content/uploads/2013/11/19.png"><img src="/wp-content/uploads/2013/11/19.png" title="1"></a></p>
+<p><a href="/wp-content/uploads/2013/11/33.png">  
+</a></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/34.png"><img src="/wp-content/uploads/2013/11/34.png" title="3"></a></p>
+<p> </p>
+<p>siteurl值的修改和home值的修改同理，个人感觉修改数据库的方法最好，操作最简便。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-15T07:58:34.000Z" title="11/15/2013, 3:58:34 PM">2013-11-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:12:16.000Z" title="2/21/2014, 5:12:16 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 347 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/15/CSS3%E5%81%9A%E9%A1%B5%E9%9D%A2%E6%B7%A1%E5%85%A5%E6%95%88%E6%9E%9C/">CSS3做页面淡入效果</a></h1><div class="content"><p>用CSS3动画属性“@keyframes ”可实现一些动态特效（这篇文章主要是实践应用一下这个动画属性，实现页面淡入特效，在火狐24版、chrome29版、IE10中测试通过。IE9及以下浏览器不支持此特效。）</p>
 <p>淡入代码：</p>
 <p>@keyframes fade-in { 0% {opacity: 0;}/<em>初始状态 透明度为0</em>/ 40% {opacity: 0;}/<em>过渡状态 透明度为0</em>/ 100% {opacity: 1;}/<em>结束状态 透明度为1</em>/ } @-webkit-keyframes fade-in {/<em>针对webkit内核</em>/ 0% {opacity: 0;} 40% {opacity: 0;} 100% {opacity: 1;} } #wrapper { animation: fade-in;/<em>动画名称</em>/ animation-duration: 1.5s;/<em>动画持续时间</em>/ -webkit-animation:fade-in 1.5s;/<em>针对webkit内核</em>/ }</p>
 <p>直接将上述代码添加到主题style样式文件中，并修改其中 #wrapper 为你的主题ID或类的名称即可。</p>
-<p>另外，可针对页面某部分延长显示时间，比如侧边栏，再加上一句：</p></div><a class="article-more button is-small is-size-7" href="/2013/11/15/CSS3%E5%81%9A%E9%A1%B5%E9%9D%A2%E6%B7%A1%E5%85%A5%E6%95%88%E6%9E%9C/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-03T10:12:34.000Z" title="11/3/2013, 6:12:34 PM">2013-11-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:17:23.000Z" title="2/21/2014, 5:17:23 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 330 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/03/%E5%BC%80%E6%9C%BA%E6%97%B6Error-15-file-not-found%E8%A7%A3%E5%86%B3/">开机时Error 15: file not found解决</a></h1><div class="content"><p>有三种情况会出现这个错误：<br> 1.是grub.conf文件里面的配置出错，这需要你去自己校对该文件，看是否设置正确；<br> 2.是系统在启动过程时，需要加载vmlinuz和initrd这两个文件，如果因为某种诡异的原因在/boot目录下的这两个文件丢失了，也会报上面的错误，那么就需要创建这两个文件；<br> 3.多系统引导错误（windows下添加linux的启动项，开机出现）</p>
+<p>另外，可针对页面某部分延长显示时间，比如侧边栏，再加上一句：</p>
+<p>#sidebar { animation: fade-in; animation-duration: 4s; -webkit-animation:fade-in 1.5s; }</p>
+<p>同理，可对页面不同的部分设定不同的淡入显示时间，实现分段显示。</p>
+<p>附：@keyframes具体语法和参数如：</p>
+<p>@keyframes <em>animationname</em> {<em>keyframes-selector</em> {<em>css-styles</em>;}}</p>
+<table border="1"><tbody><tr><th>值</th><th>描述</th></tr><tr><td>*animationname*</td><td>必需。定义动画的名称。</td></tr><tr><td>*keyframes-selector*</td><td>必需。动画时长的百分比。合法的值：- 0-100%
+- from（与 0% 相同）
+- to（与 100% 相同）
+
+</td></tr><tr><td>*css-styles*</td><td>必需。一个或多个合法的 CSS 样式属性。</td></tr></tbody></table>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-03T10:12:34.000Z" title="11/3/2013, 6:12:34 PM">2013-11-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:17:23.000Z" title="2/21/2014, 5:17:23 AM">2014-02-21</time></span><span class="level-item">2 minutes read (About 330 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/03/%E5%BC%80%E6%9C%BA%E6%97%B6Error-15-file-not-found%E8%A7%A3%E5%86%B3/">开机时Error 15: file not found解决</a></h1><div class="content"><p>有三种情况会出现这个错误：<br> 1.是grub.conf文件里面的配置出错，这需要你去自己校对该文件，看是否设置正确；<br> 2.是系统在启动过程时，需要加载vmlinuz和initrd这两个文件，如果因为某种诡异的原因在/boot目录下的这两个文件丢失了，也会报上面的错误，那么就需要创建这两个文件；<br> 3.多系统引导错误（windows下添加linux的启动项，开机出现）</p>
 <p>这里先解决第三种情况，前面两种情况以后再说。</p>
 <p>windows下添加ubuntu的启动项是这样的：</p>
 <p><img src="http://img1.ph.126.net/jq5W6Hj18pYkMCFBRw2BfA==/6598285826517531415.png" alt="windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro"><br><span style="color: #008000;"><br><span style="font-size: medium;">这时候</span><span style="font-size: medium;"><span style="font-size: medium;"><span style="font-size: medium;">开机之后选ubuntu，</span>有人是正常启动的，</span>有人出现Error 15: file not found<span style="font-size: medium;">；<span style="font-size: medium;">如果</span></span></span><span style="font-size: medium;">无法启动，出现error15，这时删除刚才添加的neogrub启动，添加ubuntu的grub2引导（和添加12.04的引导一样）：</span></span></p>
-<p><a href="/wp-content/uploads/2013/11/111.jpg"><img src="/wp-content/uploads/2013/11/111-300x198.jpg" title="111"></a></p></div><a class="article-more button is-small is-size-7" href="/2013/11/03/%E5%BC%80%E6%9C%BA%E6%97%B6Error-15-file-not-found%E8%A7%A3%E5%86%B3/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-03T10:08:31.000Z" title="11/3/2013, 6:08:31 PM">2013-11-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:18:19.000Z" title="2/21/2014, 5:18:19 AM">2014-02-21</time></span><span class="level-item">9 minutes read (About 1312 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/03/windows8%E4%B8%8B%E5%AE%89%E8%A3%85ubuntu12-04-13-04%E5%8F%8C%E7%B3%BB%E7%BB%9F/">windows8下安装ubuntu12.04/13.04双系统</a></h1><div class="content"><p>windows8与ubuntu12.04双系统安装方法和win7+ubuntu双系统安装方法差不多，只不过稍微有点小不同。</p>
+<p><a href="/wp-content/uploads/2013/11/111.jpg"><img src="/wp-content/uploads/2013/11/111-300x198.jpg" title="111"></a></p>
+<p> </p>
+<p>然后下载下面ANG0.zip文件，解压出ANG0，替换c盘根目录下的ANG0即可：</p>
+<p>ANG0.zip下载： <a target="_blank" rel="noopener" href="http://pan.baidu.com/s/15TfO2" title="http://pan.baidu.com/s/15TfO2">http://pan.baidu.com/s/15TfO2</a></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-11-03T10:08:31.000Z" title="11/3/2013, 6:08:31 PM">2013-11-03</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:18:19.000Z" title="2/21/2014, 5:18:19 AM">2014-02-21</time></span><span class="level-item">9 minutes read (About 1312 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/11/03/windows8%E4%B8%8B%E5%AE%89%E8%A3%85ubuntu12-04-13-04%E5%8F%8C%E7%B3%BB%E7%BB%9F/">windows8下安装ubuntu12.04/13.04双系统</a></h1><div class="content"><p>windows8与ubuntu12.04双系统安装方法和win7+ubuntu双系统安装方法差不多，只不过稍微有点小不同。</p>
 <p> </p>
 <p><span style="color: #333300; font-size: medium;">首先下载Windows8和ubuntu系统镜像</span></p>
 <p>1.Windows8_MSDN版下载地址：</p>
-<p><a target="_blank" rel="noopener" href="http://msdn.ez58.net/">http://msdn.ez58.net</a>             <a target="_blank" rel="noopener" href="http://msdn.itellyou.cn/">http://msdn.itellyou.cn</a></p></div><a class="article-more button is-small is-size-7" href="/2013/11/03/windows8%E4%B8%8B%E5%AE%89%E8%A3%85ubuntu12-04-13-04%E5%8F%8C%E7%B3%BB%E7%BB%9F/#more">Read more</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-10-30T11:58:44.000Z" title="10/30/2013, 7:58:44 PM">2013-10-30</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:20:22.000Z" title="2/21/2014, 5:20:22 AM">2014-02-21</time></span><span class="level-item">5 minutes read (About 681 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/10/30/Ubuntu-12-04%E4%B8%8BLAMP%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Ubuntu 12.04下LAMP安装配置</a></h1><div class="content"><p>我是一个Linux新手，想要安装一台Ubuntu 12.04版的Linux服务器，用这台服务器上的LAMP套件来运行我自己的个人网站。LAMP套件就是“Linux+Apache+Mysql+PHP这四款软件组成了一个可以使网站运行的套装工具软件。”通过安装尝试，我获得了一些成功的安装配置经验，通过本文提供给Linux网站服务器系统的入门者学习。本次安装的网站软件环境中将使用Apache2网页服务软件、MySQL5网站后台数据库软件、以及PHP5角本解释语言软件，配置成的系统也可提供FTP服务。</p>
+<p><a target="_blank" rel="noopener" href="http://msdn.ez58.net/">http://msdn.ez58.net</a>             <a target="_blank" rel="noopener" href="http://msdn.itellyou.cn/">http://msdn.itellyou.cn</a></p>
+<p><span style="color: #ff0000;"> Windows8_X64 多合一免激活激活版</span>下载地址：</p>
+<p><a target="_blank" rel="noopener" href="http://pan.baidu.com/share/link?shareid=478098&uk=1209563959">http://pan.baidu.com/share/link?shareid=478098&amp;uk=1209563959</a></p>
+<p>2.ubuntu下载地址：</p>
+<p>正式版：<br><a target="_blank" rel="noopener" href="http://www.ubuntu.com/download">http://www.ubuntu.com/download</a></p>
+<p>最新版：</p>
+<p><a target="_blank" rel="noopener" href="http://cdimage.ubuntu.com/daily-live/">http://cdimage.ubuntu.com/daily-live/</a><br><span style="color: #003300; font-size: medium;">开始安装系统  </span><br> 1.安装系统<br> 首先安装windows8和ubuntu12.04，安装先后顺序可以不用管，只是安装到ubuntu的分区时需要注意device for boot loader installation的选择（grub的安装位置），如果选择整个硬盘，则开机启动时win会被ubuntu管理启动（用grub引导 windows），这样卸载ubuntu后，win也会将启动丢失，引起系统进不去的问题（当然可以修复）；如果device for boot loader installation选择ubuntu的/boot所在的分区后，下次启动会默认进入win，这时只要在win下用freebcd添加个ubuntu的引导就行了。</p>
+<div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img4.ph.126.net/WyUs8bKr5FDyTwOg6sDLmg==/6598241846052214184.jpg)</div>按照上面的方法，当grub安装到ubuntu所在的分区，两个系统都安装完（不管是先安装ubuntu还是windows），这时都会只进得去win系统，这是正常的，因为整个磁盘的引导是mbr。然后在win8下安装easybcd软件（即往mbr添加一个ubuntu的引导）。
+
+<p>2.安装easybcd<br> 下载easybcd软件安装时会提示你安装.net xxx 3.5<br> 管理员打开cmd输入dism.exe /online /enable-feature /featurename:NetFX3 /Source:H:\sources\sxs（这里的h是挂载的win8的系统镜像的虚拟光驱的盘符，这个看自己的情况自定义）</p>
+<div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img9.ph.126.net/Q0DXD-5sQ7WmplicfyF-hw==/6597696488285048789.jpg)</div>等会就安装好了。
+
+<p>3.使用easybcd添加ubuntu的启动项<br> 添加ubuntu的启动项，这个和win7下一样操作，这时重启，你会发现ubuntu的启动项是被添加了，但是却用的win8的启动管理ubuntu的启动项（即双系统选择界面是metro模式），<span style="color: #ff0000;">不过没有关系：设置ubuntu启动项为默认启动项即可！</span></p>
+<p><span style="color: #ff0000;">12.04以及之前版本可以用ubuntu grub2添加启动项，12.10和13.04则用neogrub添加启动项。如果升级到12.10或13.04之后会出现ubuntu启动不了的情况，这时重新给ubuntu添加neogrub启动项可以引导启动。</span></p>
+<span style="color: #ff0000;">  
+</span>
+
+<p><span style="color: #ff0000;">12.04及以前版本添加方法：</span></p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/642325896870563167.jpg"><img src="/wp-content/uploads/2013/11/642325896870563167-300x198.jpg" title="642325896870563167"></a></p>
+<p> </p>
+<p>下面的drive选ubuntu的/分区（如果/boot单独分区选/boot所在目录）目录所在的分区</p>
+<p> </p>
+<p><a href="/wp-content/uploads/2013/11/642325896870563168.jpg"><img src="/wp-content/uploads/2013/11/642325896870563168-300x199.jpg" title="642325896870563168"></a></p>
+<p> </p>
+<p> </p>
+<p><span style="color: #ff0000;">12.10，13.04 ，13.10添加方法：<br></span></p>
+<div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img1.ph.126.net/jq5W6Hj18pYkMCFBRw2BfA==/6598285826517531415.png)</div>输入内容：
+
+<p><span style="color: #ff0000;">title Ubuntu/Linux 13.04<br> find –set-root /boot/grub/i386-pc/core.img<br> kernel /boot/grub/i386-pc/core.img<br> boot</span></p>
+<p>#如果 /boot 是单独分区的，使用下面这样的：<br> title ubuntu/Linux 13.04 (/boot on single partitionas)<br> find –set-root /grub/i386-pc/core.img<br> kernel /grub/i386-pc/core.img<br> boot</p>
+<p> </p>
+<p><span style="color: #008000; font-size: medium;"><span style="font-size: medium;">如果</span><span style="font-size: medium;">出现</span></span><span style="color: #008000; font-size: medium;">Error 15: file not found，解决方法：<a target="_blank" rel="noopener" href="http://ldixing.sinaapp.com/?p=121" title=" http://ldixing.sinaapp.com/?p=121"> http://ldixing.sinaapp.com/?p=121</a></span></p>
+<p>或者这里添加13.04和13.10的引导时用grub2模式，然后参照上面的链接替换c盘ANG0文件搞定，这样可以避免出现2次grub引导界面！<br> 4.关闭win8的快捷启动</p>
+<p>为什么要关闭win8的快捷启动呢,因为这个功能，win8在关机的时候不会进行完整彻底的关机，而是类似于深度休眠的状态。正是因为没有完整彻底的关机，导致我们每次从win8系统关机之后,第二次打开电源都会直接进入win8系统,没有ubuntu的启动项可以选择;但是win8的重启是正常的关机,所以从win8重启才有win8和ubuntu的双启动项!</p>
+<p>关闭深度休眠方法:<br> a、控制面板——电源选项——选择电源按钮的功能——点击上面蓝色字体“更改当前不可用的设置”——win关机设置中启用混合启动不要勾选。</p>
+<p>b、组策略编辑器(开始—运行–gpedit.msc就可以了 )——计算机配置——管理模板——系统——Shutdown——Require use of hybrid boot—— 进入配置界面——Disabled</p>
+<p>c、删除休眠文件hiberfil.sys，释放C盘空间：win+x——命令提示符（管理员）——输入：powercfg/h off</p>
+<p> </p>
+<div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img0.ph.126.net/oytUa-hCXbFmH4X-OZ60VA==/6597667900982804682.jpg)</div> 
+
+<div></div> 
+
+<div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img0.ph.126.net/kv5elWB2qrdUDBrOnDRniQ==/6597795444331813707.png)</div><div></div><div></div><div></div><div></div><div></div><div><div>![windows8+ubuntu12.04双系统安装方法 - xiao106347 - Software Pro](http://img0.ph.126.net/xUyXfwFiU9az6heOxFwp_g==/6597606328331823054.png)</div></div><div></div>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2013-10-30T11:58:44.000Z" title="10/30/2013, 7:58:44 PM">2013-10-30</time></span><span class="level-item">Updated&nbsp;<time dateTime="2014-02-20T21:20:22.000Z" title="2/21/2014, 5:20:22 AM">2014-02-21</time></span><span class="level-item">5 minutes read (About 681 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2013/10/30/Ubuntu-12-04%E4%B8%8BLAMP%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">Ubuntu 12.04下LAMP安装配置</a></h1><div class="content"><p>我是一个Linux新手，想要安装一台Ubuntu 12.04版的Linux服务器，用这台服务器上的LAMP套件来运行我自己的个人网站。LAMP套件就是“Linux+Apache+Mysql+PHP这四款软件组成了一个可以使网站运行的套装工具软件。”通过安装尝试，我获得了一些成功的安装配置经验，通过本文提供给Linux网站服务器系统的入门者学习。本次安装的网站软件环境中将使用Apache2网页服务软件、MySQL5网站后台数据库软件、以及PHP5角本解释语言软件，配置成的系统也可提供FTP服务。</p>
 <ol>
 <li>LAMP 的安装</li>
 </ol>
@@ -53,7 +443,42 @@
 
 <div id="codeText">1. sudo apt-get install phpmyadmin
 
-</div></div><a class="article-more button is-small is-size-7" href="/2013/10/30/Ubuntu-12-04%E4%B8%8BLAMP%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/#more">Read more</a></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/17/">Previous</a></div><div class="pagination-next is-invisible is-hidden-mobile"><a href="/page/19/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/17/">17</a></li><li><a class="pagination-link is-current" href="/page/18/">18</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://img.ikstatic.cn/MTYzMTE3MTU3NDM3MCM1MzYjcG5n.png" alt="Ludis"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ludis</p><p class="is-size-6 is-block">Valar Morghulis, Valar Dohaeris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Beijing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">177</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/flute" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/3852099619"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:552452006@qq.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-30T07:42:16.000Z">2021-06-30</time></p><p class="title"><a href="/2021/06/30/React-Antd-Warning%E7%A7%BB%E9%99%A4%E5%A4%A7%E6%B3%95%E2%80%94%E2%80%94%E6%95%B4%E4%B8%AA%E4%B8%96%E7%95%8C%E6%B8%85%E5%87%80%E4%BA%86/">React/Antd Warning移除大法——整个世界清净了</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-05-14T10:41:14.000Z">2020-05-14</time></p><p class="title"><a href="/2020/05/14/IntersectionObserver/">IntersectionObserver</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-02-06T13:45:55.000Z">2020-02-06</time></p><p class="title"><a href="/2020/02/06/%E5%BE%AE%E5%B1%81%E6%81%A9%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E4%B9%8B-%E2%80%94%E2%80%94-V2Ray/">微屁恩使用指南之 —— V2Ray</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-12-10T07:45:26.000Z">2019-12-10</time></p><p class="title"><a href="/2019/12/10/H5%E5%9C%A8%E5%85%A8%E5%B1%8FWebview%E4%B8%AD%E5%8F%8C%E7%AB%AF%E9%80%82%E9%85%8D%E5%88%98%E6%B5%B7%E5%B1%8F/">H5在全屏Webview中双端适配刘海屏</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-07-25T09:58:45.000Z">2019-07-25</time></p><p class="title"><a href="/2019/07/25/vue-%E9%A1%B9%E7%9B%AE%E5%9C%A8%E4%BD%8E%E9%85%8D%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%BA%BF%E5%8F%8A%E4%BC%98%E5%8C%96/">vue 项目在低配机器上线及优化</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/03/"><span class="level-start"><span class="level-item">March 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/02/"><span class="level-start"><span class="level-item">February 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/01/"><span class="level-start"><span class="level-item">January 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">September 2018</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/04/"><span class="level-start"><span class="level-item">April 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/03/"><span class="level-start"><span class="level-item">March 2018</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/02/"><span class="level-start"><span class="level-item">February 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/01/"><span class="level-start"><span class="level-item">January 2018</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/06/"><span class="level-start"><span class="level-item">June 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/05/"><span class="level-start"><span class="level-item">May 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/03/"><span class="level-start"><span class="level-item">March 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/12/"><span class="level-start"><span class="level-item">December 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/11/"><span class="level-start"><span class="level-item">November 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/10/"><span class="level-start"><span class="level-item">October 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/09/"><span class="level-start"><span class="level-item">September 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/08/"><span class="level-start"><span class="level-item">August 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/07/"><span class="level-start"><span class="level-item">July 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/02/"><span class="level-start"><span class="level-item">February 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/12/"><span class="level-start"><span class="level-item">December 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/11/"><span class="level-start"><span class="level-item">November 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/10/"><span class="level-start"><span class="level-item">October 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/09/"><span class="level-start"><span class="level-item">September 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/08/"><span class="level-start"><span class="level-item">August 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/07/"><span class="level-start"><span class="level-item">July 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/06/"><span class="level-start"><span class="level-item">June 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/05/"><span class="level-start"><span class="level-item">May 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/04/"><span class="level-start"><span class="level-item">April 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/03/"><span class="level-start"><span class="level-item">March 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/02/"><span class="level-start"><span class="level-item">February 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/01/"><span class="level-start"><span class="level-item">January 2015</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/12/"><span class="level-start"><span class="level-item">December 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/11/"><span class="level-start"><span class="level-item">November 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/10/"><span class="level-start"><span class="level-item">October 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/09/"><span class="level-start"><span class="level-item">September 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/08/"><span class="level-start"><span class="level-item">August 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/07/"><span class="level-start"><span class="level-item">July 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/06/"><span class="level-start"><span class="level-item">June 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/05/"><span class="level-start"><span class="level-item">May 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/04/"><span class="level-start"><span class="level-item">April 2014</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/03/"><span class="level-start"><span class="level-item">March 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/02/"><span class="level-start"><span class="level-item">February 2014</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/01/"><span class="level-start"><span class="level-item">January 2014</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/12/"><span class="level-start"><span class="level-item">December 2013</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/11/"><span class="level-start"><span class="level-item">November 2013</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/10/"><span class="level-start"><span class="level-item">October 2013</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Flutter/"><span class="tag">Flutter</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ghost/"><span class="tag">Ghost</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/H5/"><span class="tag">H5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTTPS/"><span class="tag">HTTPS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Mac/"><span class="tag">Mac</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React-Native/"><span class="tag">React Native</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sublime/"><span class="tag">Sublime</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jQuery/"><span class="tag">jQuery</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs/"><span class="tag">nodejs</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/npm/"><span class="tag">npm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/"><span class="tag">爬虫</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/"><span class="tag">电视剧</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BE%8E%E9%A3%9F/"><span class="tag">美食</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2021 Ludis</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div>在安装过程中会要求选择Web server：apache2或lighttpd，选择apache2，按tab键然后确定。然后会要求输入设置的Mysql数据库密码连接密码 Password of the database’s administrative user。
+
+<p>然后将phpmyadmin与apache2建立连接，以我的为例：www目录在/var/www，phpmyadmin在/usr/share /phpmyadmin目录，所以就用命令：sudo ln -s /usr/share/phpmyadmin /var/www 建立连接。</p>
+<p>phpmyadmin测试：在浏览器地址栏中打开<a target="_blank" rel="noopener" href="http://localhost/phpmyadmin%E3%80%82">http://localhost/phpmyadmin。</a></p>
+<ol start="3">
+<li>Apache 配置</li>
+</ol>
+<p>（1）启用 mod_rewrite 模块</p>
+<p>终端命令：sudo a2enmod rewrite</p>
+<p>（2）重启Apache服务器：sudo /etc/init.d/apache2 restart</p>
+<p>Apache重启后可以测试一下，在/var/www目录下新建文件test.php，写入代码： 保存，在地址栏输入<a target="_blank" rel="noopener" href="http://127.0.0.1/test.php">http://127.0.0.1/test.php</a> 或 <a target="_blank" rel="noopener" href="http://localhost/test.php">http://localhost/test.php</a> ，如果正确出现了Mysql已经正确配置，表明Apache和mysql都正常了。(记得重启Apache服务器后再测试)。</p>
+<p>test.php</p>
+<div id="codeText">1. <?php
+2.     $link = mysql_connect(“localhost”,”root”,”mysql密码”);
+3. 
+4.     if (!$link)
+5. 
+6.     {
+7. 
+8.     die(‘Could not connect: ‘ . mysql_error());
+9. 
+10.     }
+11. 
+12.     else echo “Mysql已经正确配置”;
+13. 
+14.     mysql_close($link);
+15. 
+16.     ?>
+
+</div>4. 浏览器PHP中文乱码问题
+
+<p>上面在FireFox浏览器中打开test.php测试时，如果出现了中文乱码，则是默认语言设置问题，解决方法如下：</p>
+<p>打开apache配置文件： udo gedit /etc/apache2/apache2.conf，在最后面加上：AddDefaultCharset UTF-8，如果还是乱码的，再将UTF-8改用gb2312。</p>
+<p>重启Apache：sudo /etc/init.d/apache2 restart 再刷新test.php 中文乱码没有了</p>
+<p><span style="color: #ff0000;">更多Ubuntu相关信息见</span><span><span style="color: #0000ff;">ubuntu</span></span><span style="color: #ff0000;">专题页面<a target="_blank" rel="noopener" href="http://ldixing.sinaapp.com/">http://www.ldsun.com</a></span></p>
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/17/">Previous</a></div><div class="pagination-next is-invisible is-hidden-mobile"><a href="/page/19/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/17/">17</a></li><li><a class="pagination-link is-current" href="/page/18/">18</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://img.ikstatic.cn/MTYzMTE3MTU3NDM3MCM1MzYjcG5n.png" alt="Ludis"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ludis</p><p class="is-size-6 is-block">Valar Morghulis, Valar Dohaeris</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Beijing</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">177</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/flute" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/flute"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/3852099619"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:552452006@qq.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-30T07:42:16.000Z">2021-06-30</time></p><p class="title"><a href="/2021/06/30/React-Antd-Warning%E7%A7%BB%E9%99%A4%E5%A4%A7%E6%B3%95%E2%80%94%E2%80%94%E6%95%B4%E4%B8%AA%E4%B8%96%E7%95%8C%E6%B8%85%E5%87%80%E4%BA%86/">React/Antd Warning移除大法——整个世界清净了</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-05-14T10:41:14.000Z">2020-05-14</time></p><p class="title"><a href="/2020/05/14/IntersectionObserver/">IntersectionObserver</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-02-06T13:45:55.000Z">2020-02-06</time></p><p class="title"><a href="/2020/02/06/%E5%BE%AE%E5%B1%81%E6%81%A9%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E4%B9%8B-%E2%80%94%E2%80%94-V2Ray/">微屁恩使用指南之 —— V2Ray</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-12-10T07:45:26.000Z">2019-12-10</time></p><p class="title"><a href="/2019/12/10/H5%E5%9C%A8%E5%85%A8%E5%B1%8FWebview%E4%B8%AD%E5%8F%8C%E7%AB%AF%E9%80%82%E9%85%8D%E5%88%98%E6%B5%B7%E5%B1%8F/">H5在全屏Webview中双端适配刘海屏</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-07-25T09:58:45.000Z">2019-07-25</time></p><p class="title"><a href="/2019/07/25/vue-%E9%A1%B9%E7%9B%AE%E5%9C%A8%E4%BD%8E%E9%85%8D%E6%9C%BA%E5%99%A8%E4%B8%8A%E7%BA%BF%E5%8F%8A%E4%BC%98%E5%8C%96/">vue 项目在低配机器上线及优化</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">June 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">May 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">February 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">December 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/07/"><span class="level-start"><span class="level-item">July 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/03/"><span class="level-start"><span class="level-item">March 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/02/"><span class="level-start"><span class="level-item">February 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/01/"><span class="level-start"><span class="level-item">January 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/12/"><span class="level-start"><span class="level-item">December 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/10/"><span class="level-start"><span class="level-item">October 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/09/"><span class="level-start"><span class="level-item">September 2018</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/08/"><span class="level-start"><span class="level-item">August 2018</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/04/"><span class="level-start"><span class="level-item">April 2018</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/03/"><span class="level-start"><span class="level-item">March 2018</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/02/"><span class="level-start"><span class="level-item">February 2018</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2018/01/"><span class="level-start"><span class="level-item">January 2018</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/06/"><span class="level-start"><span class="level-item">June 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/05/"><span class="level-start"><span class="level-item">May 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2017/03/"><span class="level-start"><span class="level-item">March 2017</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/12/"><span class="level-start"><span class="level-item">December 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/11/"><span class="level-start"><span class="level-item">November 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/10/"><span class="level-start"><span class="level-item">October 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/09/"><span class="level-start"><span class="level-item">September 2016</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/08/"><span class="level-start"><span class="level-item">August 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/07/"><span class="level-start"><span class="level-item">July 2016</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2016/02/"><span class="level-start"><span class="level-item">February 2016</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/12/"><span class="level-start"><span class="level-item">December 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/11/"><span class="level-start"><span class="level-item">November 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/10/"><span class="level-start"><span class="level-item">October 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/09/"><span class="level-start"><span class="level-item">September 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/08/"><span class="level-start"><span class="level-item">August 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/07/"><span class="level-start"><span class="level-item">July 2015</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/06/"><span class="level-start"><span class="level-item">June 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/05/"><span class="level-start"><span class="level-item">May 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/04/"><span class="level-start"><span class="level-item">April 2015</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/03/"><span class="level-start"><span class="level-item">March 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/02/"><span class="level-start"><span class="level-item">February 2015</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2015/01/"><span class="level-start"><span class="level-item">January 2015</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/12/"><span class="level-start"><span class="level-item">December 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/11/"><span class="level-start"><span class="level-item">November 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/10/"><span class="level-start"><span class="level-item">October 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/09/"><span class="level-start"><span class="level-item">September 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/08/"><span class="level-start"><span class="level-item">August 2014</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/07/"><span class="level-start"><span class="level-item">July 2014</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/06/"><span class="level-start"><span class="level-item">June 2014</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/05/"><span class="level-start"><span class="level-item">May 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/04/"><span class="level-start"><span class="level-item">April 2014</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/03/"><span class="level-start"><span class="level-item">March 2014</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/02/"><span class="level-start"><span class="level-item">February 2014</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2014/01/"><span class="level-start"><span class="level-item">January 2014</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/12/"><span class="level-start"><span class="level-item">December 2013</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/11/"><span class="level-start"><span class="level-item">November 2013</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2013/10/"><span class="level-start"><span class="level-item">October 2013</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Flutter/"><span class="tag">Flutter</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ghost/"><span class="tag">Ghost</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/H5/"><span class="tag">H5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTTPS/"><span class="tag">HTTPS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Mac/"><span class="tag">Mac</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React-Native/"><span class="tag">React Native</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Sublime/"><span class="tag">Sublime</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jQuery/"><span class="tag">jQuery</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nodejs/"><span class="tag">nodejs</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/npm/"><span class="tag">npm</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/"><span class="tag">爬虫</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/"><span class="tag">电视剧</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BE%8E%E9%A3%9F/"><span class="tag">美食</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9A%8F%E7%AC%94/"><span class="tag">随笔</span><span class="tag">3</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/facvion.png" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2021 Ludis</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/flute"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
